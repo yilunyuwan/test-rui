@@ -13,7 +13,7 @@ interface BaseButtonProps {
   disabled?: boolean;
 }
 
-type ButtonProps = Partial<
+export type ButtonProps = Partial<
   BaseButtonProps &
     ButtonHTMLAttributes<HTMLElement> &
     AnchorHTMLAttributes<HTMLElement>

@@ -23,6 +23,9 @@ function App() {
       <Button btnType="link" href="https://www.baidu.com">
         试试
       </Button>
+      <Button btnType="link" href="https://www.baidu.com" disabled={true}>
+        试试
+      </Button>
       <Alert title="this is an alert" />
       <Alert type="danger" title="this is danger" />
       <Alert type="warning" title="this is warning" />

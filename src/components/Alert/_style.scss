@@ -1,0 +1,52 @@
+.alert {
+  min-width: 26rem;
+  width: 26rem;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  position: relative;
+  border: $border-width solid transparent;
+  border-radius: $border-radius;
+  z-index: 2;
+
+  &-content {
+    display: flex;
+    position:relative;
+    vertical-align: middle;
+  }
+
+  &-content {
+    display: flex;
+    position:relative;
+    vertical-align: middle;
+  }
+
+  &-description {
+    font-size:$font-size-sm;
+  }
+
+  &-success {
+    @include alert-style($success, $white)
+  }
+
+  &-default {
+    @include alert-style($primary, $white)
+  }
+
+  &-warning {
+    @include alert-style($warning, $white)
+  }
+
+  &-danger {
+    @include alert-style($danger, $white)
+  }
+
+  &-close{
+    position: absolute;
+    right: 0;
+    top:0;
+    padding: 0.75rem 1.25rem;
+    vertical-align: middle;
+    color: inherit;
+    cursor: pointer;
+  }
+}

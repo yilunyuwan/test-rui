@@ -28,3 +28,13 @@
     border-color: $border;
   }
 }
+
+@mixin alert-style(
+  $background,
+  $color,
+  $border:darken($background, 7.5%)
+){
+  color: $color;
+  background: $background;
+  border-color: $border;
+}

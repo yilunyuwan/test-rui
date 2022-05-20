@@ -24,11 +24,18 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: disabled && btnType === "link",
   });
   if (btnType === "link" && href) {
+    const disabledProps = disabled
+      ? {
+          "aria-disabled": true,
+          onClick: () => {
+            return false;
+          },
+        }
+      : null;
     return (
-      <a href={href} className={classes} {...restProps}>
+      <a href={href} className={classes} {...restProps} {...disabledProps}>
         {children}
       </a>
     );

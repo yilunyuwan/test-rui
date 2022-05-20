@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 type AlertType = "default" | "success" | "danger" | "warning";
 
-interface AlertProps {
+export interface AlertProps {
   closable?: boolean;
   type?: AlertType;
   title: string;
@@ -14,7 +14,15 @@ interface AlertProps {
   onClose?: () => void;
 }
 export const Alert: React.FC<AlertProps> = (props) => {
-  const { closable, type, title, description, className, onClose } = props;
+  const {
+    closable,
+    type,
+    title,
+    description,
+    className,
+    onClose,
+    ...restProps
+  } = props;
   const classes = classnames(className, "alert", { [`alert-${type}`]: true });
   const [visible, setVisible] = useState(true);
   const handleClose = () => {
@@ -22,10 +30,14 @@ export const Alert: React.FC<AlertProps> = (props) => {
     if (onClose) onClose();
   };
   const content = visible ? (
-    <div className={classes}>
+    <div className={classes} {...restProps}>
       {closable && (
         <span className="alert-close">
-          <IconClose onClick={handleClose} />
+          <IconClose
+            onClick={handleClose}
+            role="button"
+            aria-label="closeButton"
+          />
         </span>
       )}
       <header className="alert-title">{title}</header>

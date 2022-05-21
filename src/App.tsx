@@ -1,10 +1,24 @@
 import React from "react";
 import Button from "./components/Button/button";
 import Alert from "./components/Alert/alert";
+import { Menu } from "./components/Menu/menu";
+import { MenuItem } from "./components/Menu/menuItem";
 
 function App() {
   return (
     <div className="App">
+      <Menu
+        onSelect={(index) => {
+          alert(`click ${index}`);
+        }}
+      >
+        <MenuItem index={0}>首页</MenuItem>
+        <MenuItem index={1}>组件</MenuItem>
+        <MenuItem index={2}>文档</MenuItem>
+        <MenuItem index={3} disabled={true}>
+          关于作者
+        </MenuItem>
+      </Menu>
       <Button autoFocus={true}>试试</Button>
       <Button btnType="primary">试试</Button>
       <Button

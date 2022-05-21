@@ -1,5 +1,6 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
+import { scopedClass } from "../../helpers/utils";
 
 type ButtonType = "primary" | "danger" | "default" | "link";
 type ButtonSize = "lg" | "sm";
@@ -21,9 +22,10 @@ export type ButtonProps = Partial<
 export const Button: React.FC<ButtonProps> = (props) => {
   const { children, className, btnType, size, href, disabled, ...restProps } =
     props;
-  const classes = classNames("btn", className, {
-    [`btn-${btnType}`]: btnType,
-    [`btn-${size}`]: size,
+  const sc = scopedClass("btn");
+  const classes = classNames(sc(), className, {
+    [sc(btnType)]: btnType,
+    [sc(size)]: size,
   });
   if (btnType === "link" && href) {
     const disabledProps = disabled

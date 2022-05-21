@@ -1,5 +1,6 @@
 import Button, { ButtonProps } from "./button";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { scopedClass } from "../../helpers/utils";
 
 const defaultProps = {
   onClick: jest.fn(),
@@ -21,13 +22,15 @@ const disabledProps: ButtonProps = {
   onClick: jest.fn(),
 };
 
+const sc = scopedClass("btn");
+
 describe("test Button component", () => {
   it("should render the correct default button", () => {
     render(<Button {...defaultProps}>Nice</Button>);
     const element = screen.queryByText("Nice") as HTMLElement;
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual("BUTTON");
-    expect(element).toHaveClass("btn btn-default");
+    expect(element).toHaveClass(`${sc()} ${sc("default")}`);
     fireEvent.click(element);
     expect(defaultProps.onClick).toHaveBeenCalled();
   });
@@ -36,7 +39,7 @@ describe("test Button component", () => {
     render(<Button {...customProps}>Nice</Button>);
     const element = screen.queryByText("Nice");
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass("btn btn-primary btn-sm test");
+    expect(element).toHaveClass(`${sc()} ${sc("primary")} ${sc("sm")} test`);
   });
 
   it("should render a link when btnType equals link and href is provided", () => {
@@ -44,7 +47,7 @@ describe("test Button component", () => {
     const element = screen.queryByText("Link") as HTMLElement;
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual("A");
-    expect(element).toHaveClass("btn btn-link");
+    expect(element).toHaveClass(`${sc()} ${sc("link")}`);
   });
 
   it("should render disabled button when disabled set to true", () => {

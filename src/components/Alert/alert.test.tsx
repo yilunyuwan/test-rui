@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Alert, { AlertProps } from "./alert";
+import { scopedClass } from "../../helpers/utils";
 
 const defaultProps: AlertProps = {
   title: "default alert",
@@ -11,12 +12,14 @@ const customProps: AlertProps = {
   type: "success",
   closable: false,
 };
+
+const sc = scopedClass("alert");
 describe("test Alert component", () => {
   it("render the default closable alert component", () => {
     render(<Alert data-testid="alert" {...defaultProps} />);
     const element = screen.queryByTestId("alert");
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass("alert alert-default");
+    expect(element).toHaveClass(`${sc()} ${sc("default")}`);
     expect(screen.getByText(defaultProps.title)).toBeInTheDocument();
     const closeButton = screen.queryByRole("button", {
       name: "closeButton",
@@ -30,7 +33,7 @@ describe("test Alert component", () => {
     render(<Alert data-testid="alert" {...customProps} />);
     const element = screen.queryByTestId("alert");
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass("alert alert-success");
+    expect(element).toHaveClass(`${sc()} ${sc("success")}`);
     expect(
       screen.getByText(customProps.description as string)
     ).toBeInTheDocument();

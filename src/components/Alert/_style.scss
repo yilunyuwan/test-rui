@@ -1,4 +1,4 @@
-.alert {
+.rui-alert {
   min-width: 26rem;
   width: 26rem;
   padding: 0.75rem 1.25rem;
@@ -7,12 +7,6 @@
   border: $border-width solid transparent;
   border-radius: $border-radius;
   z-index: 2;
-
-  &-content {
-    display: flex;
-    position:relative;
-    vertical-align: middle;
-  }
 
   &-content {
     display: flex;

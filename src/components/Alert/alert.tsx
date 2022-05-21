@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as IconClose } from "../../assets/close.svg";
 import classnames from "classnames";
 import ReactDOM from "react-dom";
+import { scopedClass } from "../../helpers/utils";
 
 type AlertType = "default" | "success" | "danger" | "warning";
 
@@ -23,7 +24,8 @@ export const Alert: React.FC<AlertProps> = (props) => {
     onClose,
     ...restProps
   } = props;
-  const classes = classnames(className, "alert", { [`alert-${type}`]: true });
+  const sc = scopedClass("alert");
+  const classes = classnames(className, sc(), { [sc(type)]: true });
   const [visible, setVisible] = useState(true);
   const handleClose = () => {
     setVisible(false);
@@ -32,7 +34,7 @@ export const Alert: React.FC<AlertProps> = (props) => {
   const content = visible ? (
     <div className={classes} {...restProps}>
       {closable && (
-        <span className="alert-close">
+        <span className={sc("close")}>
           <IconClose
             onClick={handleClose}
             role="button"
@@ -40,8 +42,8 @@ export const Alert: React.FC<AlertProps> = (props) => {
           />
         </span>
       )}
-      <header className="alert-title">{title}</header>
-      {description && <div className="alert-description">{description}</div>}
+      <header className={sc("title")}>{title}</header>
+      {description && <div className={sc("description")}>{description}</div>}
     </div>
   ) : null;
   return ReactDOM.createPortal(content, document.body);

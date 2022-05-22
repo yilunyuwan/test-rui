@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Menu
+        mode="vertical"
         onSelect={(index) => {
           alert(`click ${index}`);
         }}
@@ -25,7 +26,7 @@ function App() {
         btnType="danger"
         onClick={(e) => {
           e.preventDefault();
-          // alert("danger");
+          alert("danger");
           return <Alert type="danger" title="this is danger" />;
         }}
       >

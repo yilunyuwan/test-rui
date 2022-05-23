@@ -1,4 +1,5 @@
 const libName = "rui";
 export const scopedClass = (scope: string) => {
-  return (name?: string) => [libName, scope, name].filter(Boolean).join("-");
+  return (name?: string, ...others: string[]) =>
+    [libName, scope, name, ...others].filter(Boolean).join("-");
 };

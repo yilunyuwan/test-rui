@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { scopedClass } from "../../helpers/utils";
 import classNames from "classnames";
 
-type Mode = "horizontal" | "vertical";
-interface MenuProps {
+export type Mode = "horizontal" | "vertical";
+export interface MenuProps {
   mode?: Mode;
   defaultIndex?: number;
   onSelect?: (selectedIndex: number) => void;

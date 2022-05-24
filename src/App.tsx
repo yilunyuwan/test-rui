@@ -3,6 +3,7 @@ import Button from "./components/Button/button";
 import Alert from "./components/Alert/alert";
 import { Menu } from "./components/Menu/menu";
 import { MenuItem } from "./components/Menu/menuItem";
+import { SubMenu } from "./components/Menu/subMenu";
 
 function App() {
   return (
@@ -13,12 +14,14 @@ function App() {
           alert(`click ${index}`);
         }}
       >
-        <MenuItem index={0}>首页</MenuItem>
-        <MenuItem index={1}>组件</MenuItem>
-        <MenuItem index={2}>文档</MenuItem>
-        <MenuItem index={3} disabled={true}>
-          关于作者
-        </MenuItem>
+        <MenuItem>首页</MenuItem>
+        <MenuItem>组件</MenuItem>
+        <MenuItem>文档</MenuItem>
+        <MenuItem disabled={true}>关于作者</MenuItem>
+        <SubMenu title="展开">
+          <MenuItem>常见问题</MenuItem>
+          <MenuItem>更多</MenuItem>
+        </SubMenu>
       </Menu>
       <Button autoFocus={true}>试试</Button>
       <Button btnType="primary">试试</Button>

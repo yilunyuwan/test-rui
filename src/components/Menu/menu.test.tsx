@@ -10,20 +10,18 @@ const defaultProps = {
 
 const verticalProps = {
   mode: "vertical" as Mode,
-  defaultIndex: 2,
+  defaultIndex: "2",
 };
 
 const generateMenu = (props: MenuProps) => (
   <Menu data-testid="menu" {...props}>
-    <MenuItem data-testid="item1" index={0}>
-      item1
-    </MenuItem>
-    <MenuItem disabled={true} data-testid="disabled" index={1}>
+    <MenuItem data-testid="item1">item1</MenuItem>
+    <MenuItem disabled={true} data-testid="disabled">
       disabled
     </MenuItem>
-    <MenuItem data-testid="item3" index={2}>
-      item3
-    </MenuItem>
+    <MenuItem data-testid="item3">item3</MenuItem>
+    {/*测试是否只接受MenuItem为子元素*/}
+    {/*<li>item li</li>*/}
   </Menu>
 );
 
@@ -34,7 +32,9 @@ let menuElement: HTMLElement,
 const setup = (props: MenuProps) => {
   render(generateMenu(props));
   menuElement = screen.getByTestId("menu");
-  activeItem = screen.getByTestId(`item${(props.defaultIndex || 0) + 1}`);
+  activeItem = screen.getByTestId(
+    `item${Number(props.defaultIndex || "0") + 1}`
+  );
   disabledItem = screen.getByTestId("disabled");
   idleItem = screen.getByTestId(`item${props.defaultIndex ? 1 : 3}`);
 };
@@ -45,7 +45,7 @@ describe("test Menu and MenuItem component in default(horizontal) mode", () => {
     setup(defaultProps);
     expect(menuElement).toHaveClass(`test ${sc()} ${sc("horizontal")}`);
     // eslint-disable-next-line testing-library/no-node-access
-    expect(menuElement.getElementsByClassName(`${sc("item")}`).length).toBe(3);
+    expect(menuElement.getElementsByTagName("li").length).toBe(3);
     expect(activeItem).toHaveClass(`${sc("item", "active")}`);
     fireEvent.click(disabledItem);
     expect(defaultProps.onSelect).not.toBeCalled();
@@ -54,10 +54,12 @@ describe("test Menu and MenuItem component in default(horizontal) mode", () => {
   it("click item should change active and call the right callback", () => {
     setup(defaultProps);
     fireEvent.click(idleItem);
-    expect(defaultProps.onSelect).toBeCalledWith(2);
+    expect(defaultProps.onSelect).toBeCalledWith("2");
     expect(activeItem).not.toHaveClass(sc("item", "active"));
     expect(idleItem).toHaveClass(sc("item", "active"));
   });
+
+  it("", () => {});
 });
 
 describe("test Menu and MenuItem component passing customized props (defaultIndex & vertical mode)", () => {

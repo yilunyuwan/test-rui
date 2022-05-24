@@ -11,7 +11,8 @@
     cursor: pointer;
     padding: $menu-item-padding-y $menu-item-padding-x;
     border-bottom: $menu-item-active-border-width solid transparent;
-    transition:$menu-transition;
+    transition: $menu-transition;
+
     &-active,
     &:hover {
       color: $menu-item-active-color;
@@ -22,6 +23,7 @@
       pointer-events: none;
       color: $menu-item-disabled-color;
     }
+
   }
 }
 
@@ -31,6 +33,7 @@
     margin: 2rem;
     border-bottom: 0;
     border-right: $menu-border-width solid $menu-border-color;
+
     > .rui-menu-item {
       border-left: $menu-item-active-border-width solid transparent;
       border-bottom: none;
@@ -40,7 +43,78 @@
         border-bottom: none;
         border-left: $menu-item-active-border-width solid $menu-item-active-color;
       }
+
+      &-submenu {
+        &.rui-menu-item {
+          border-left: $menu-item-active-border-width solid transparent;
+          &-active,
+          &:hover {
+            color: initial;
+          }
+        }
+
+        .rui-submenu {
+          padding-left: 0;
+          display: none;
+          &-opened {
+            display: block;
+          }
+          > .rui-menu-item {
+            list-style: none;
+            border-bottom: none;
+          }
+
+          &-title {
+            margin-bottom: $menu-item-padding-y;
+            &:hover{
+              color: $menu-item-active-color;
+              transition: $menu-transition;
+            }
+          }
+        }
+      }
     }
   }
+}
 
+.rui-menu {
+  &-horizontal {
+    .rui-menu-item-submenu {
+      position: relative;
+
+      &.rui-menu-item {
+        border-bottom: $menu-item-active-border-width solid transparent;
+
+        .rui-submenu {
+          display: none;
+          position: absolute;
+          padding-left: 0;
+          white-space: nowrap;
+          top: calc(100% + 0.5rem);
+          left: 0;
+          z-index: 3;
+          list-style: none;
+          border: $menu-border-width solid $menu-border-color;
+          box-shadow: $menu-box-shadow;
+          background: $white;
+
+          .rui-menu-item {
+            border-bottom: none;
+          }
+          &-opened {
+            display: block;
+          }
+        }
+
+        &-active,
+        &:hover {
+          color: initial;
+          border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+          .rui-submenu-title{
+            color: $menu-item-active-color;
+          }
+        }
+      }
+    }
+  }
 }

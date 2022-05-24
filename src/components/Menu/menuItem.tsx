@@ -3,9 +3,9 @@ import { scopedClass } from "../../helpers/utils";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 
-interface MenuItemProps {
+export interface MenuItemProps {
   disabled?: Boolean;
-  index?: number;
+  index?: string;
   children?: React.ReactNode;
   className?: string;
 }
@@ -27,3 +27,5 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
     </li>
   );
 };
+
+MenuItem.displayName = "MenuItem";

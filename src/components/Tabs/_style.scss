@@ -1,0 +1,47 @@
+.rui-tabs-nav {
+  border-bottom: $menu-border-width solid $menu-border-color;
+
+  &-item {
+    background: $white;
+    padding: $menu-item-padding-y $menu-item-padding-x;
+
+    &-active {
+      color: $menu-item-active-color;
+    }
+
+    &[aria-disabled='true'] {
+      color: $menu-item-disabled-color;
+      pointer-events: none;
+    }
+  }
+}
+
+.rui-tabs-nav-line {
+  .rui-tabs-nav-item {
+    border: none;
+
+    &-active {
+      border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+
+  }
+}
+
+.rui-tabs-nav-card {
+  .rui-tabs-nav-item {
+    margin-bottom: -$menu-border-width;
+    border: $menu-border-width solid transparent;
+    border-bottom: $menu-border-width solid $menu-border-color;
+    &-active {
+      border: $menu-border-width solid $menu-border-color;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+      border-bottom: $menu-border-width solid transparent;
+    }
+
+  }
+}
+
+.rui-tabs-content {
+  margin-top: 1rem;
+}

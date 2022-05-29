@@ -22,7 +22,7 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
       context.onClick(index);
   };
   return (
-    <li className={classes} onClick={handleClick} {...restProps}>
+    <li role="tab" className={classes} onClick={handleClick} {...restProps}>
       {children}
     </li>
   );

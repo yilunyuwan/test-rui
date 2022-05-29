@@ -4,20 +4,45 @@ import Alert from "./components/Alert/alert";
 import { Menu } from "./components/Menu/menu";
 import { MenuItem } from "./components/Menu/menuItem";
 import { SubMenu } from "./components/Menu/subMenu";
+import { Tabs } from "./components/Tabs/tabs";
+import { TabItem } from "./components/Tabs/tabItem";
+import { ReactComponent as CloseIcon } from "./assets/close.svg";
 
 function App() {
   return (
     <div className="App">
+      <Tabs type="card">
+        <TabItem label="选项一">
+          <div>
+            hadfa<span>111</span>
+          </div>
+        </TabItem>
+        <TabItem label="选项二">内容二</TabItem>
+        <TabItem label="禁用" disabled>
+          disabled
+        </TabItem>
+        <TabItem
+          label={
+            <span>
+              <CloseIcon />
+              自定义选项
+            </span>
+          }
+        >
+          是不是有图标呢
+        </TabItem>
+      </Tabs>
       <Menu
         mode="vertical"
         onSelect={(index) => {
           alert(`click ${index}`);
         }}
+        openedIndexes={["4"]}
       >
         <MenuItem>首页</MenuItem>
         <MenuItem>组件</MenuItem>
         <MenuItem>文档</MenuItem>
-        <MenuItem disabled={true}>关于作者</MenuItem>
+        <MenuItem disabled>关于作者</MenuItem>
         <SubMenu title="展开">
           <MenuItem>常见问题</MenuItem>
           <MenuItem>更多</MenuItem>

@@ -18,8 +18,9 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
   const isOpened =
     index === context.selectedIndex ||
     (context.mode === "vertical" &&
-      context.openedIndex?.includes(index as string)) ||
+      context.openedIndexes?.includes(index as string)) ||
     false;
+
   const [submenuVisible, setSubmenuVisible] = useState<Boolean>(isOpened);
   const classes_item = classNames(className, sc_item(), sc_item("submenu"), {
     [sc_item("active")]: context.selectedIndex === index,
@@ -50,7 +51,7 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
           onClick: () => setSubmenuVisible(!submenuVisible),
         }
       : {};
-  // const
+
   const filterChildren = () =>
     React.Children.map(children, (child, idx) => {
       const childElement =

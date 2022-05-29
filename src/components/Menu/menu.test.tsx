@@ -1,7 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Menu, MenuProps, Mode } from "./menu";
 import { MenuItem } from "./menuItem";
 import { scopedClass } from "../../helpers/utils";
+import { SubMenu } from "./subMenu";
 
 const defaultProps = {
   onSelect: jest.fn(),
@@ -11,24 +12,48 @@ const defaultProps = {
 const verticalProps = {
   mode: "vertical" as Mode,
   defaultIndex: "2",
+  onSelect: jest.fn(),
+  openedIndexes: ["4"],
 };
 
 const generateMenu = (props: MenuProps) => (
   <Menu data-testid="menu" {...props}>
     <MenuItem data-testid="item1">item1</MenuItem>
-    <MenuItem disabled={true} data-testid="disabled">
+    <MenuItem disabled data-testid="disabled">
       disabled
     </MenuItem>
     <MenuItem data-testid="item3">item3</MenuItem>
     {/*测试是否只接受MenuItem为子元素*/}
     {/*<li>item li</li>*/}
+    <SubMenu title="dropdown">
+      <MenuItem>drop1</MenuItem>
+      <MenuItem>drop2</MenuItem>
+    </SubMenu>
+    <SubMenu title="openedSubmenu">
+      <MenuItem>drop3</MenuItem>
+      <MenuItem>drop4</MenuItem>
+    </SubMenu>
   </Menu>
 );
+
+const generateStyleFile = () => {
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .rui-submenu {
+      display: none;
+    }
+    .rui-submenu-opened {
+      display: block;
+     }
+  `;
+  return style;
+};
 
 let menuElement: HTMLElement,
   activeItem: HTMLElement,
   disabledItem: HTMLElement,
   idleItem: HTMLElement;
+
 const setup = (props: MenuProps) => {
   render(generateMenu(props));
   menuElement = screen.getByTestId("menu");
@@ -45,7 +70,7 @@ describe("test Menu and MenuItem component in default(horizontal) mode", () => {
     setup(defaultProps);
     expect(menuElement).toHaveClass(`test ${sc()} ${sc("horizontal")}`);
     // eslint-disable-next-line testing-library/no-node-access
-    expect(menuElement.getElementsByTagName("li").length).toBe(3);
+    expect(menuElement.querySelectorAll(":scope > li").length).toBe(5);
     expect(activeItem).toHaveClass(`${sc("item", "active")}`);
     fireEvent.click(disabledItem);
     expect(defaultProps.onSelect).not.toBeCalled();
@@ -59,7 +84,19 @@ describe("test Menu and MenuItem component in default(horizontal) mode", () => {
     expect(idleItem).toHaveClass(sc("item", "active"));
   });
 
-  it("", () => {});
+  it("show dropdown items when mouse entering and hide them when mouse leaving", async () => {
+    setup(defaultProps);
+    document.body.appendChild(generateStyleFile());
+    const submenuTitle = screen.getByText("dropdown");
+    const drop2 = screen.getByText("drop2");
+    expect(drop2).not.toBeVisible();
+    fireEvent.mouseEnter(submenuTitle);
+    await waitFor(() => expect(drop2).toBeVisible());
+    fireEvent.click(drop2);
+    expect(defaultProps.onSelect).toBeCalledWith("3-1");
+    fireEvent.mouseLeave(submenuTitle);
+    await waitFor(() => expect(drop2).not.toBeVisible());
+  });
 });
 
 describe("test Menu and MenuItem component passing customized props (defaultIndex & vertical mode)", () => {
@@ -69,5 +106,24 @@ describe("test Menu and MenuItem component passing customized props (defaultInde
     expect(activeItem).toHaveClass(`${sc("item")} ${sc("item", "active")}`);
     fireEvent.click(disabledItem);
     expect(defaultProps.onSelect).not.toBeCalled();
+  });
+
+  it("render opened submenu when passing proper openedIndexes & toggle submenu when clicking the title of submenu", () => {
+    setup(verticalProps);
+    document.body.appendChild(generateStyleFile());
+    const submenuTitle = screen.getByText("openedSubmenu");
+    const drop3 = screen.getByText("drop3");
+    expect(drop3).toBeVisible();
+    fireEvent.click(submenuTitle);
+    expect(drop3).not.toBeVisible();
+    fireEvent.click(submenuTitle);
+    expect(drop3).toBeVisible();
+  });
+
+  it("call onSelect function when click item in submenu", () => {
+    setup(verticalProps);
+    const drop3 = screen.getByText("drop3");
+    fireEvent.click(drop3);
+    expect(verticalProps.onSelect).toBeCalledWith("4-0");
   });
 });

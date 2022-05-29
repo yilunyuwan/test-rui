@@ -8,7 +8,7 @@ export interface MenuProps {
   mode?: Mode;
   defaultIndex?: string;
   onSelect?: (selectedIndex: string) => void;
-  openedIndex?: string[];
+  openedIndexes?: string[];
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -18,18 +18,19 @@ interface IMenuContext {
   onClick?: (index: string) => void;
   selectedIndex: string;
   mode: Mode;
-  openedIndex?: string[];
+  openedIndexes?: string[];
 }
 
 const defaultProps = {
   mode: "horizontal" as Mode,
   defaultIndex: "0",
-  openedIndex: [],
+  openedIndexes: [],
 };
 
 export const MenuContext = React.createContext<IMenuContext>({
   selectedIndex: defaultProps.defaultIndex,
   mode: defaultProps.mode,
+  openedIndexes: defaultProps.openedIndexes,
 });
 
 export const Menu: React.FC<MenuProps> = (props) => {
@@ -37,7 +38,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
     mode = defaultProps.mode,
     defaultIndex = defaultProps.defaultIndex,
     onSelect,
-    openedIndex = defaultProps.openedIndex,
+    openedIndexes = defaultProps.openedIndexes,
     children,
     style,
     className,
@@ -54,11 +55,17 @@ export const Menu: React.FC<MenuProps> = (props) => {
     onClick,
     selectedIndex,
     mode,
-    openedIndex,
+    openedIndexes,
   };
 
   const filterChildren = () =>
     React.Children.map(children, (child, index) => {
+      if (typeof child !== "object") {
+        console.error(
+          "Warning: Menu has a child which is not a MenuItem or SubMenu component"
+        );
+        return;
+      }
       const childElement =
         child as React.FunctionComponentElement<MenuItemProps>;
       const { displayName } = childElement.type;

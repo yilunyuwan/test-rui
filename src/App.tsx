@@ -6,7 +6,8 @@ import { MenuItem } from "./components/Menu/menuItem";
 import { SubMenu } from "./components/Menu/subMenu";
 import { Tabs } from "./components/Tabs/tabs";
 import { TabItem } from "./components/Tabs/tabItem";
-import { ReactComponent as CloseIcon } from "./assets/close.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <TabItem
           label={
             <span>
-              <CloseIcon />
+              <FontAwesomeIcon icon={solid("coffee")}></FontAwesomeIcon>
               自定义选项
             </span>
           }

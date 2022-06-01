@@ -1,18 +1,31 @@
-import React, { SVGAttributes } from "react";
-import classnames from "classnames";
+import React from "react";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
+import { scopedClass } from "../../helpers/utils";
+import classNames from "classnames";
 
-type IconProps = {
-  name: string;
-  className?: string;
-} & SVGAttributes<SVGElement>;
+type ThemeProps =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "info"
+  | "warning"
+  | "danger"
+  | "light"
+  | "dark";
 
+interface IconProps extends FontAwesomeIconProps {
+  theme?: ThemeProps;
+}
 export const Icon: React.FC<IconProps> = (props) => {
-  const { name, className, ...restProps } = props;
-  return (
-    <svg className={classnames("icon")} {...restProps}>
-      <use xlinkHref={`#${name}`} />
-    </svg>
-  );
+  const { theme, className, ...restProps } = props;
+  const sc = scopedClass("icon");
+  const classes = classNames(className, sc(), {
+    [sc(theme)]: theme,
+  });
+  return <FontAwesomeIcon className={classes} {...restProps} />;
 };
 
 export default Icon;

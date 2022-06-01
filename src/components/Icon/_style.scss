@@ -1,5 +1,11 @@
-.icon{
+.rui-icon{
   width: 1rem;
   height: 1rem;
-  fill: currentColor;
+  color: currentColor;
+}
+
+@each $name, $value in $theme-colors{
+  .rui-icon-#{$name} {
+    color: $value;
+  }
 }

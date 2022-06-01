@@ -8,6 +8,7 @@ import { Tabs } from "./components/Tabs/tabs";
 import { TabItem } from "./components/Tabs/tabItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import Icon from "./components/Icon/icon";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           是不是有图标呢
         </TabItem>
       </Tabs>
+      <Icon icon={solid("check")} size="lg" theme="danger" />
       <Menu
         mode="vertical"
         onSelect={(index) => {

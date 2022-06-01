@@ -24,6 +24,13 @@
       color: $menu-item-disabled-color;
     }
 
+    &-submenu {
+      .rui-icon{
+        margin-left: 0.5rem;
+        transition: transform .25s ease-in-out;
+      }
+    }
+
   }
 }
 
@@ -50,6 +57,14 @@
           &-active,
           &:hover {
             color: initial;
+            .rui-submenu-title {
+              color: $menu-item-active-color;
+            }
+          }
+          &-opened{
+            .rui-icon {
+              transform: rotateX(180deg);
+            }
           }
         }
 
@@ -112,6 +127,9 @@
           border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
           .rui-submenu-title{
             color: $menu-item-active-color;
+            .rui-icon {
+              transform: rotateX(180deg);
+            }
           }
         }
       }

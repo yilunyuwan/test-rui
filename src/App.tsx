@@ -6,7 +6,6 @@ import { MenuItem } from "./components/Menu/menuItem";
 import { SubMenu } from "./components/Menu/subMenu";
 import { Tabs } from "./components/Tabs/tabs";
 import { TabItem } from "./components/Tabs/tabItem";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Icon from "./components/Icon/icon";
 
@@ -26,7 +25,7 @@ function App() {
         <TabItem
           label={
             <span>
-              <FontAwesomeIcon icon={solid("coffee")}></FontAwesomeIcon>
+              <Icon icon={solid("coffee")} />
               自定义选项
             </span>
           }
@@ -34,7 +33,6 @@ function App() {
           是不是有图标呢
         </TabItem>
       </Tabs>
-      <Icon icon={solid("check")} size="lg" theme="danger" />
       <Menu
         mode="vertical"
         onSelect={(index) => {

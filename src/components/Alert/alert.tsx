@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { ReactComponent as IconClose } from "../../assets/close.svg";
 import classnames from "classnames";
 import ReactDOM from "react-dom";
 import { scopedClass } from "../../helpers/utils";
+import Icon from "../Icon/icon";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 type AlertType = "default" | "success" | "danger" | "warning";
 
@@ -34,12 +35,13 @@ export const Alert: React.FC<AlertProps> = (props) => {
   const content = visible ? (
     <div className={classes} {...restProps}>
       {closable && (
-        <span className={sc("close")}>
-          <IconClose
-            onClick={handleClose}
-            role="button"
-            aria-label="closeButton"
-          />
+        <span
+          className={sc("close")}
+          role="button"
+          aria-label="closeButton"
+          onClick={handleClose}
+        >
+          <Icon icon={solid("xmark")} />
         </span>
       )}
       <header className={sc("title")}>{title}</header>

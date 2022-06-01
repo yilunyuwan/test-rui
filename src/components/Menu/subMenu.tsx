@@ -3,6 +3,8 @@ import { MenuContext } from "./menu";
 import classNames from "classnames";
 import { scopedClass } from "../../helpers/utils";
 import { MenuItemProps } from "./menuItem";
+import Icon from "../Icon/icon";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 interface SubMenuProps {
   title: string;
@@ -23,7 +25,10 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
 
   const [submenuVisible, setSubmenuVisible] = useState<Boolean>(isOpened);
   const classes_item = classNames(className, sc_item(), sc_item("submenu"), {
-    [sc_item("active")]: context.selectedIndex === index,
+    [sc_item("active")]:
+      context.selectedIndex === index ||
+      context.selectedIndex.split("-")[0] === index,
+    [sc_item("opened")]: submenuVisible,
   });
   const classes_submenu = classNames(sc_submenu(), {
     [sc_submenu("opened")]: submenuVisible,
@@ -48,7 +53,11 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
   const clickEvent =
     context.mode === "vertical"
       ? {
-          onClick: () => setSubmenuVisible(!submenuVisible),
+          onClick: () => {
+            if (!submenuVisible && context.onClick && index !== undefined)
+              context.onClick(index);
+            setSubmenuVisible(!submenuVisible);
+          },
         }
       : {};
 
@@ -68,6 +77,7 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
     <li className={classes_item} {...restProps} {...hoverEvents}>
       <div className={sc_submenu("title")} {...clickEvent}>
         {title}
+        <Icon icon={solid("arrow-down")} />
       </div>
       <ul className={classes_submenu}>{filterChildren()}</ul>
     </li>

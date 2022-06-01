@@ -26,7 +26,7 @@ describe("test Alert component", () => {
     }) as HTMLElement;
     expect(closeButton).toBeInTheDocument();
     fireEvent.click(closeButton);
-    expect(closeButton).not.toBeInTheDocument();
+    expect(element).not.toBeInTheDocument();
   });
 
   it("render the correct alert based on different props", () => {

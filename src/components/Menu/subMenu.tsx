@@ -5,7 +5,7 @@ import { scopedClass } from "../../helpers/utils";
 import { MenuItemProps } from "./menuItem";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { CSSTransition } from "react-transition-group";
+import { Transition } from "../Transtition/transition";
 
 interface SubMenuProps {
   title: string;
@@ -78,15 +78,18 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
         {title}
         <Icon icon={solid("angle-down")} />
       </div>
-      <CSSTransition
-        in={submenuVisible}
-        timeout={300}
-        classNames="zoom-in-top"
-        appear
-        unmountOnExit
-      >
+      <Transition in={submenuVisible} timeout={300} animation="zoom-in-top">
         <ul className={classes_submenu}>{filterChildren()}</ul>
-      </CSSTransition>
+      </Transition>
+      {/*<CSSTransition*/}
+      {/*  in={submenuVisible}*/}
+      {/*  timeout={300}*/}
+      {/*  classNames="zoom-in-top"*/}
+      {/*  appear*/}
+      {/*  unmountOnExit*/}
+      {/*>*/}
+      {/*  <ul className={classes_submenu}>{filterChildren()}</ul>*/}
+      {/*</CSSTransition>*/}
     </li>
   );
 };

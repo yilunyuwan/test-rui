@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { scopedClass } from "../../helpers/utils";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { Transition } from "../Transtition/transition";
 
 type AlertType = "default" | "success" | "danger" | "warning";
 
@@ -32,22 +33,24 @@ export const Alert: React.FC<AlertProps> = (props) => {
     setVisible(false);
     if (onClose) onClose();
   };
-  const content = visible ? (
-    <div className={classes} {...restProps}>
-      {closable && (
-        <span
-          className={sc("close")}
-          role="button"
-          aria-label="closeButton"
-          onClick={handleClose}
-        >
-          <Icon icon={solid("xmark")} />
-        </span>
-      )}
-      <header className={sc("title")}>{title}</header>
-      {description && <div className={sc("description")}>{description}</div>}
-    </div>
-  ) : null;
+  const content = (
+    <Transition in={visible} timeout={300} animation="zoom-in-top">
+      <div className={classes} {...restProps}>
+        {closable && (
+          <span
+            className={sc("close")}
+            role="button"
+            aria-label="closeButton"
+            onClick={handleClose}
+          >
+            <Icon icon={solid("xmark")} />
+          </span>
+        )}
+        <header className={sc("title")}>{title}</header>
+        {description && <div className={sc("description")}>{description}</div>}
+      </div>
+    </Transition>
+  );
   return ReactDOM.createPortal(content, document.body);
 };
 

@@ -15,7 +15,7 @@ function App() {
       <Tabs type="card">
         <TabItem label="选项一">
           <div>
-            hadfa<span>111</span>
+            我是选项一的内容：<span>111</span>
           </div>
         </TabItem>
         <TabItem label="选项二">内容二</TabItem>

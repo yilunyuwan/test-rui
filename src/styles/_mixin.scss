@@ -38,3 +38,37 @@
   background: $background;
   border-color: $border;
 }
+
+@mixin zoom-animation(
+  $direction,
+  $scaleStart,
+  $scaleEnd,
+  $originX,
+  $originY,
+){
+  $appearances: 'appear', 'enter';
+  @each $appearance in $appearances{
+    .zoom-in-#{$direction}-#{$appearance}{
+      opacity: 0;
+      transform: $scaleStart;
+    }
+    .zoom-in-#{$direction}-#{$appearance}-active{
+      opacity: 1;
+      transform: $scaleEnd;
+      transform-origin: $originX $originY;
+      transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    }
+  }
+
+  .zoom-in-#{$direction}-exit{
+    opacity: 1;
+  }
+  .zoom-in-#{$direction}-exit-active{
+    opacity: 0;
+    transform: $scaleStart;
+    transform-origin: $originX $originY;
+    transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+    transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  }
+}

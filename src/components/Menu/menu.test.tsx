@@ -88,14 +88,16 @@ describe("test Menu and MenuItem component in default(horizontal) mode", () => {
     setup(defaultProps);
     document.body.appendChild(generateStyleFile());
     const submenuTitle = screen.getByText("dropdown");
-    const drop2 = screen.getByText("drop2");
-    expect(drop2).not.toBeVisible();
+    expect(screen.queryByText("drop2")).not.toBeInTheDocument();
     fireEvent.mouseEnter(submenuTitle);
-    await waitFor(() => expect(drop2).toBeVisible());
+    const drop2 = await screen.findByText("drop2");
+    expect(drop2).toBeInTheDocument();
     fireEvent.click(drop2);
     expect(defaultProps.onSelect).toBeCalledWith("3-1");
     fireEvent.mouseLeave(submenuTitle);
-    await waitFor(() => expect(drop2).not.toBeVisible());
+    await waitFor(() =>
+      expect(screen.queryByText("drop2")).not.toBeInTheDocument()
+    );
   });
 });
 
@@ -108,16 +110,16 @@ describe("test Menu and MenuItem component passing customized props (defaultInde
     expect(defaultProps.onSelect).not.toBeCalled();
   });
 
-  it("render opened submenu when passing proper openedIndexes & toggle submenu when clicking the title of submenu", () => {
+  it("render opened submenu when passing proper openedIndexes & toggle submenu when clicking the title of submenu", async () => {
     setup(verticalProps);
     document.body.appendChild(generateStyleFile());
     const submenuTitle = screen.getByText("openedSubmenu");
-    const drop3 = screen.getByText("drop3");
-    expect(drop3).toBeVisible();
+    const drop3 = await screen.findByText("drop3");
+    expect(drop3).toBeInTheDocument();
     fireEvent.click(submenuTitle);
-    expect(drop3).not.toBeVisible();
+    await waitFor(() => expect(drop3).not.toBeInTheDocument());
     fireEvent.click(submenuTitle);
-    expect(drop3).toBeVisible();
+    expect(await screen.findByText("drop3")).toBeInTheDocument();
   });
 
   it("call onSelect function when click item in submenu", () => {

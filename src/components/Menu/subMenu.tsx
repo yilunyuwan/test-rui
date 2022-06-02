@@ -5,6 +5,7 @@ import { scopedClass } from "../../helpers/utils";
 import { MenuItemProps } from "./menuItem";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { CSSTransition } from "react-transition-group";
 
 interface SubMenuProps {
   title: string;
@@ -23,18 +24,16 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
       context.openedIndexes?.includes(index as string)) ||
     false;
 
-  const [submenuVisible, setSubmenuVisible] = useState<Boolean>(isOpened);
+  const [submenuVisible, setSubmenuVisible] = useState<boolean>(isOpened);
   const classes_item = classNames(className, sc_item(), sc_item("submenu"), {
     [sc_item("active")]:
       context.selectedIndex === index ||
       context.selectedIndex.split("-")[0] === index,
     [sc_item("opened")]: submenuVisible,
   });
-  const classes_submenu = classNames(sc_submenu(), {
-    [sc_submenu("opened")]: submenuVisible,
-  });
+  const classes_submenu = classNames(sc_submenu());
   let timer: NodeJS.Timeout;
-  const toggleVisible = (visible: Boolean) => {
+  const toggleVisible = (visible: boolean) => {
     clearTimeout(timer);
     timer = setTimeout(
       () => {
@@ -77,9 +76,17 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
     <li className={classes_item} {...restProps} {...hoverEvents}>
       <div className={sc_submenu("title")} {...clickEvent}>
         {title}
-        <Icon icon={solid("arrow-down")} />
+        <Icon icon={solid("angle-down")} />
       </div>
-      <ul className={classes_submenu}>{filterChildren()}</ul>
+      <CSSTransition
+        in={submenuVisible}
+        timeout={300}
+        classNames="zoom-in-top"
+        appear
+        unmountOnExit
+      >
+        <ul className={classes_submenu}>{filterChildren()}</ul>
+      </CSSTransition>
     </li>
   );
 };

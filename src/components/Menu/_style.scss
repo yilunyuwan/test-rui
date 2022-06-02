@@ -70,10 +70,6 @@
 
         .rui-submenu {
           padding-left: 0;
-          display: none;
-          &-opened {
-            display: block;
-          }
           > .rui-menu-item {
             list-style: none;
             border-bottom: none;
@@ -101,7 +97,6 @@
         border-bottom: $menu-item-active-border-width solid transparent;
 
         .rui-submenu {
-          display: none;
           position: absolute;
           padding-left: 0;
           white-space: nowrap;
@@ -115,9 +110,6 @@
 
           .rui-menu-item {
             border-bottom: none;
-          }
-          &-opened {
-            display: block;
           }
         }
 

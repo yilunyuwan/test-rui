@@ -1,15 +1,16 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
-import { scopedClass } from "../../helpers/utils";
+import { insertSpaceInButton, scopedClass } from "../../helpers/utils";
 
 type ButtonType = "primary" | "danger" | "default" | "link";
-type ButtonSize = "lg" | "sm";
+type ButtonSize = "large" | "small" | "middle";
 
 interface BaseButtonProps {
   children: React.ReactNode;
   className?: string;
   btnType?: ButtonType;
   size?: ButtonSize;
+  /** 链接地址，仅当`btnType`为`"link"`时有效 */
   href?: string;
   disabled?: boolean;
 }
@@ -25,26 +26,28 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const sc = scopedClass("btn");
   const classes = classNames(sc(), className, {
     [sc(btnType)]: btnType,
-    [sc(size)]: size,
+    [sc(size)]: size && size !== "middle",
   });
+  const label = insertSpaceInButton(children);
   if (btnType === "link" && href) {
     const disabledProps = disabled
       ? {
           "aria-disabled": true,
-          onClick: () => {
+          onClick: (e: React.MouseEvent) => {
+            e.preventDefault();
             return false;
           },
         }
       : null;
     return (
       <a href={href} className={classes} {...restProps} {...disabledProps}>
-        {children}
+        {label}
       </a>
     );
   }
   return (
     <button className={classes} disabled={disabled} {...restProps}>
-      {children}
+      {label}
     </button>
   );
 };
@@ -52,6 +55,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
 Button.defaultProps = {
   disabled: false,
   btnType: "default",
+  size: "middle",
 };
 
 export default Button;

@@ -22,10 +22,10 @@
       pointer-events: none;
     }
   }
-  &-lg{
+  &-large{
     @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg)
   }
-  &-sm{
+  &-small{
     @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm)
   }
   &-default{
@@ -43,6 +43,7 @@
   &-link{
     font-weight: $font-weight-normal;
     color: $btn-link-color;
+    background-color: $white;
     text-decoration: $link-decoration;
     box-shadow: none;
     &:hover {
@@ -56,8 +57,9 @@
     }
     &:disabled,
     &[aria-disabled] {
+      cursor: not-allowed;
       color: $btn-link-disabled-color;
-      pointer-events: none;
+      text-decoration: none;
     }
   }
 }

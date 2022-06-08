@@ -20,10 +20,10 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
   const sc_submenu = scopedClass("submenu");
   const isOpened =
     index === context.selectedIndex ||
+    index === context.selectedIndex.split("-")[0] ||
     (context.mode === "vertical" &&
-      context.openedIndexes?.includes(index as string)) ||
-    false;
-
+      context.openedIndexes &&
+      context.openedIndexes.includes(index as string));
   const [submenuVisible, setSubmenuVisible] = useState<boolean>(isOpened);
   const classes_item = classNames(className, sc_item(), sc_item("submenu"), {
     [sc_item("active")]:
@@ -39,7 +39,7 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
       () => {
         setSubmenuVisible(visible);
       },
-      visible ? 0 : 300
+      visible ? 0 : 200
     );
   };
   const hoverEvents =
@@ -81,15 +81,6 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
       <Transition in={submenuVisible} timeout={300} animation="zoom-in-top">
         <ul className={classes_submenu}>{filterChildren()}</ul>
       </Transition>
-      {/*<CSSTransition*/}
-      {/*  in={submenuVisible}*/}
-      {/*  timeout={300}*/}
-      {/*  classNames="zoom-in-top"*/}
-      {/*  appear*/}
-      {/*  unmountOnExit*/}
-      {/*>*/}
-      {/*  <ul className={classes_submenu}>{filterChildren()}</ul>*/}
-      {/*</CSSTransition>*/}
     </li>
   );
 };

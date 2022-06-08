@@ -18,9 +18,9 @@ interface ITAbsContext {
   selectedIndex: number;
 }
 
-const defaultProps = {
+const defaultProps: Required<Pick<TabsProps, "defaultIndex" | "type">> = {
   defaultIndex: 0,
-  type: "line" as TabsType,
+  type: "line",
 };
 
 export const TabsContext = React.createContext<ITAbsContext>({

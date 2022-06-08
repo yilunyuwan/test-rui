@@ -15,7 +15,7 @@ const customProps: AlertProps = {
 
 const sc = scopedClass("alert");
 describe("test Alert component", () => {
-  it("render the default closable alert component", () => {
+  it("render the default closable alert component", async () => {
     render(<Alert data-testid="alert" {...defaultProps} />);
     const element = screen.queryByTestId("alert");
     expect(element).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("test Alert component", () => {
     }) as HTMLElement;
     expect(closeButton).toBeInTheDocument();
     fireEvent.click(closeButton);
-    expect(element).not.toBeInTheDocument();
+    await (() => expect(element).not.toBeInTheDocument());
   });
 
   it("render the correct alert based on different props", () => {

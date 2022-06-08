@@ -21,7 +21,7 @@ export const TabItem: React.FC<TabItemProps> = (props) => {
   };
   const sc = scopedClass("tabs-nav-item");
   const classes = classNames(className, sc(), {
-    [sc("active")]: context.selectedIndex === index,
+    [sc("active")]: context.selectedIndex === index && !disabled,
   });
   return (
     <button

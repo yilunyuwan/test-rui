@@ -6,8 +6,11 @@ import { MenuItemProps } from "./menuItem";
 export type Mode = "horizontal" | "vertical";
 export interface MenuProps {
   mode?: Mode;
+  /** 默认激活的菜单索引值 */
   defaultIndex?: string;
+  /** 点击菜单项触发的回调函数 */
   onSelect?: (selectedIndex: string) => void;
+  /** 默认开启的子菜单的索引值数组,仅当`mode`为`"vertical"时有效` */
   openedIndexes?: string[];
   children?: React.ReactNode;
   style?: React.CSSProperties;
@@ -18,11 +21,13 @@ interface IMenuContext {
   onClick?: (index: string) => void;
   selectedIndex: string;
   mode: Mode;
-  openedIndexes?: string[];
+  openedIndexes: string[];
 }
 
-const defaultProps = {
-  mode: "horizontal" as Mode,
+const defaultProps: Required<
+  Pick<MenuProps, "mode" | "defaultIndex" | "openedIndexes">
+> = {
+  mode: "horizontal",
   defaultIndex: "0",
   openedIndexes: [],
 };

@@ -8,10 +8,8 @@
     &-active {
       color: $menu-item-active-color;
     }
-
-    &[aria-disabled='true'] {
-      color: $menu-item-disabled-color;
-      pointer-events: none;
+    &[disabled] {
+      cursor: not-allowed;
     }
   }
 }

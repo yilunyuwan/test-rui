@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import classnames from "classnames";
-import ReactDOM from "react-dom";
 import { scopedClass } from "../../helpers/utils";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
@@ -9,12 +8,15 @@ import { Transition } from "../Transtition/transition";
 type AlertType = "default" | "success" | "danger" | "warning";
 
 export interface AlertProps {
+  /** 是否显示关闭按钮 */
   closable?: boolean;
   type?: AlertType;
   title: string;
+  /** 辅助描述 */
   description?: string;
   className?: string;
-  onClose?: () => void;
+  /** 关闭警告后触发的回调函数 */
+  onClose?: MouseEventHandler;
 }
 export const Alert: React.FC<AlertProps> = (props) => {
   const {
@@ -29,13 +31,20 @@ export const Alert: React.FC<AlertProps> = (props) => {
   const sc = scopedClass("alert");
   const classes = classnames(className, sc(), { [sc(type)]: true });
   const [visible, setVisible] = useState(true);
-  const handleClose = () => {
+  const handleClose: MouseEventHandler = (e) => {
     setVisible(false);
-    if (onClose) onClose();
+    if (onClose) onClose(e);
   };
-  const content = (
+  return (
     <Transition in={visible} timeout={300} animation="zoom-in-top">
       <div className={classes} {...restProps}>
+        <div className={sc("content")}>
+          <header className={sc("title")}>{title}</header>
+          {description && (
+            <div className={sc("description")}>{description}</div>
+          )}
+        </div>
+
         {closable && (
           <span
             className={sc("close")}
@@ -46,12 +55,9 @@ export const Alert: React.FC<AlertProps> = (props) => {
             <Icon icon={solid("xmark")} />
           </span>
         )}
-        <header className={sc("title")}>{title}</header>
-        {description && <div className={sc("description")}>{description}</div>}
       </div>
     </Transition>
   );
-  return ReactDOM.createPortal(content, document.body);
 };
 
 Alert.defaultProps = {

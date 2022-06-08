@@ -19,8 +19,11 @@
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
     }
 
-    &-disabled {
-      pointer-events: none;
+    &-disabled,
+    &-disabled:hover
+    {
+      cursor: not-allowed;
+      border-bottom: none;
       color: $menu-item-disabled-color;
     }
 
@@ -37,7 +40,6 @@
 .rui-menu {
   &-vertical {
     flex-direction: column;
-    margin: 2rem;
     border-bottom: 0;
     border-right: $menu-border-width solid $menu-border-color;
 
@@ -49,6 +51,12 @@
       &:hover {
         border-bottom: none;
         border-left: $menu-item-active-border-width solid $menu-item-active-color;
+      }
+
+      &-disabled,
+      &-disabled:hover
+      {
+        border-left: $menu-item-active-border-width solid transparent;
       }
 
       &-submenu {

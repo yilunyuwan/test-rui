@@ -16,7 +16,7 @@ type ThemeProps =
   | "light"
   | "dark";
 
-interface IconProps extends FontAwesomeIconProps {
+export interface IconProps extends FontAwesomeIconProps {
   theme?: ThemeProps;
 }
 export const Icon: React.FC<IconProps> = (props) => {

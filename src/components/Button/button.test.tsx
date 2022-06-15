@@ -8,7 +8,7 @@ const defaultProps = {
 
 const customProps: ButtonProps = {
   btnType: "primary",
-  size: "small",
+  size: "sm",
   className: "test",
 };
 
@@ -39,7 +39,7 @@ describe("test Button component", () => {
     render(<Button {...customProps}>Nice</Button>);
     const element = screen.queryByText("Nice");
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass(`${sc()} ${sc("primary")} ${sc("small")} test`);
+    expect(element).toHaveClass(`${sc()} ${sc("primary")} ${sc("sm")} test`);
   });
 
   it("should render a link when btnType equals link and href is provided", () => {

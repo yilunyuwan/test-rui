@@ -40,4 +40,5 @@ export const parameters = {
       excludeDecorators: true,
     },
   },
+  viewMode: "docs",
 };

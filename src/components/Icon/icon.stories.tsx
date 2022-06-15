@@ -125,6 +125,10 @@ export const SizeIcons = ({ theme }: IconProps) => (
         <code>sm</code>
       </span>
       <span className="story-iconWrapper">
+        <Icon icon={regular("face-grin-wink")} theme={theme} size="1x" />
+        <code>1x</code>
+      </span>
+      <span className="story-iconWrapper">
         <Icon icon={regular("face-grin-wink")} theme={theme} size="lg" />
         <code>lg</code>
       </span>

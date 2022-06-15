@@ -8,10 +8,29 @@ import { Tabs } from "./components/Tabs/tabs";
 import { TabItem } from "./components/Tabs/tabItem";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Icon from "./components/Icon/icon";
+import { Input } from "./components/Input/input";
 
 function App() {
   return (
     <div className="App">
+      <Input placeholder="请输入文字" />
+      <Input size="lg" defaultValue="我是大号输入框" />
+      <Input placeholder="试试看" disabled size="sm" />
+      <Input suffix="RMB" />
+      <Input prefix={<Icon icon={solid("user")} />} />
+      <Input prefix={<Icon icon={solid("user")} />} suffix="人" />
+      <Input
+        prefix={<Icon icon={solid("user")} />}
+        suffix="人"
+        prepend="https://"
+        append=".com"
+      />
+      <Input
+        prefix={<Icon icon={solid("user")} />}
+        suffix="人"
+        prepend="https://"
+        append=".com"
+      />
       <Tabs type="card">
         <TabItem label="选项一">
           <div>

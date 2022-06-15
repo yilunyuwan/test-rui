@@ -1,0 +1,112 @@
+.rui-input {
+  border: none;
+  color: $input-plaintext-color;
+  padding: 0;
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &::placeholder{
+    color: $input-placeholder-color
+  }
+}
+
+.rui-input-wrapper > .rui-input-addon{
+  color: $input-group-addon-color;
+  background: $input-group-addon-bg;
+  border: $input-border-width solid $input-group-addon-border-color;
+  border-radius: $input-border-radius;
+  display: inline-block;
+  line-height: $input-line-height;
+  @include component-size($input-padding-y, $input-padding-x, $input-font-size, $input-border-radius);
+  &.rui-input-prepend{
+    @include border-right-radius(0);
+    border-right: none;
+  }
+  &.rui-input-append{
+    @include border-left-radius(0);
+    border-left: none;
+  }
+}
+
+.rui-input-wrapper >  .rui-input-affix-wrapper {
+  border: $input-border-width solid $input-border-color;
+  box-shadow: $input-box-shadow;
+  color: $input-color;
+  margin-bottom: 0;
+  transition: $input-transition;
+  @include component-size($input-padding-y, $input-padding-x, $input-font-size, $input-border-radius);
+  &:hover  {
+    border-color: $input-focus-border-color;
+  }
+
+  &:focus-within {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+    position: relative;
+    z-index: 1;
+  }
+
+}
+
+.rui-input-wrapper >  .rui-input-affix-wrapper.rui-input-has-prepend{
+  @include border-left-radius(0)
+}
+
+.rui-input-wrapper >  .rui-input-affix-wrapper.rui-input-has-append{
+  @include border-right-radius(0)
+}
+
+
+.rui-input-wrapper-lg > .rui-input-affix-wrapper,
+.rui-input-wrapper-lg > .rui-input-addon{
+  @include component-size($input-padding-y-lg, $input-padding-x-lg, $input-font-size-lg, $input-border-radius-lg);
+}
+
+.rui-input-wrapper-sm > .rui-input-affix-wrapper,
+.rui-input-wrapper-sm > .rui-input-addon {
+  @include component-size($input-padding-y-sm, $input-padding-x-sm, $input-font-size-sm, $input-border-radius-sm);
+}
+
+.rui-input-wrapper[aria-disabled='true']{
+  background: $input-disabled-bg;
+  &:focus .rui-input-affix-wrapper {
+    transition: $input-transition;
+    border-color: $input-disabled-border-color;
+    box-shadow: none;
+  }
+}
+
+.rui-input-wrapper {
+  display: inline-block;
+  background: $input-bg;
+  font-family: $input-font-family;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  font-size: $input-font-size;
+
+  //&:hover .rui-input-affix-wrapper {
+  //  border-color: $input-focus-border-color;
+  //}
+  //
+  //&:focus-within > .rui-input-affix-wrapper {
+  //  border-color: $input-focus-border-color;
+  //  box-shadow: $input-focus-box-shadow;
+  //  position: relative;
+  //  z-index: 1;
+  //}
+}
+
+.rui-input-prefix {
+  margin-right: .25rem;
+}
+
+.rui-input-suffix {
+  margin-left: .25rem;
+}
+
+
+

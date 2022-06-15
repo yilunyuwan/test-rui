@@ -1,18 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Button } from "./button";
+import { Input } from "./input";
 
 export default {
-  title: "基础/按钮 Button",
-  component: Button,
-  argTypes: {
-    href: {
-      if: {
-        arg: "btnType",
-        eq: "link",
-      },
-    },
-  },
+  title: "表单/输入框 Input",
+  component: Input,
+  argTypes: {},
   decorators: [
     (Story) => (
       <div className="story-buttonList">
@@ -28,21 +21,16 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof Input>;
 
-export const DefaultButton: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>按钮</Button>
+export const DefaultButton: ComponentStory<typeof Input> = (args) => (
+  <Input {...args}>按钮</Input>
 );
-DefaultButton.storyName = "默认按钮";
+DefaultButton.storyName = "默认输入框";
 
 export const ButtonType = () => (
   <>
-    <Button>默认按钮</Button>
-    <Button btnType="primary">主要按钮</Button>
-    <Button btnType="danger">危险按钮</Button>
-    <Button btnType="link" href="https://baidu.com" target="_blank">
-      链接按钮
-    </Button>
+    <Input>默认按钮</Input>
   </>
 );
 ButtonType.storyName = "按钮类型";
@@ -56,9 +44,9 @@ ButtonType.parameters = {
 
 export const ButtonSize = () => (
   <>
-    <Button size="lg">大</Button>
-    <Button>中</Button>
-    <Button size="sm">小</Button>
+    <Input size="lg">大</Input>
+    <Input>中</Input>
+    <Input size="sm">小</Input>
   </>
 );
 ButtonSize.storyName = "按钮尺寸";
@@ -72,16 +60,7 @@ ButtonSize.parameters = {
 
 export const ButtonDisabled = () => (
   <>
-    <Button disabled>默认按钮 禁用</Button>
-    <Button disabled btnType="primary">
-      主要按钮 禁用
-    </Button>
-    <Button disabled btnType="danger">
-      危险按钮 禁用
-    </Button>
-    <Button disabled btnType="link" href="https://baidu.com" target="_blank">
-      链接按钮 禁用
-    </Button>
+    <Input disabled>默认按钮 禁用</Input>
   </>
 );
 ButtonDisabled.storyName = "禁用状态";

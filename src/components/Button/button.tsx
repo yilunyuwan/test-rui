@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { insertSpaceInButton, scopedClass } from "../../helpers/utils";
 
 type ButtonType = "primary" | "danger" | "default" | "link";
-type ButtonSize = "large" | "small" | "middle";
+type ButtonSize = "lg" | "sm";
 
 interface BaseButtonProps {
   children: React.ReactNode;
@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const sc = scopedClass("btn");
   const classes = classNames(sc(), className, {
     [sc(btnType)]: btnType,
-    [sc(size)]: size && size !== "middle",
+    [sc(size)]: size,
   });
   const label = insertSpaceInButton(children);
   if (btnType === "link" && href) {
@@ -55,7 +55,6 @@ export const Button: React.FC<ButtonProps> = (props) => {
 Button.defaultProps = {
   disabled: false,
   btnType: "default",
-  size: "middle",
 };
 
 export default Button;

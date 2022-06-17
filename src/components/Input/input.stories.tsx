@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Input } from "./input";
+import Icon from "../Icon/icon";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import Button from "../Button/button";
 
 export default {
   title: "表单/输入框 Input",
   component: Input,
-  argTypes: {},
+  argTypes: {
+    append: {
+      control: false,
+    },
+    prepend: {
+      control: false,
+    },
+    prefix: {
+      control: false,
+    },
+    suffix: {
+      control: false,
+    },
+    onChange: {
+      table: { disable: true },
+    },
+  },
   decorators: [
     (Story) => (
-      <div className="story-buttonList">
+      <div className="story-inputList">
         <Story />
       </div>
     ),
@@ -16,55 +35,117 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          "按钮，响应用户的点击行为。<br /> 支持原生 button 标签及 a 标签的所有属性。",
+        component: "输入框，基本表单组件。<br /> 支持原生 input 标签所有属性。",
       },
     },
   },
 } as ComponentMeta<typeof Input>;
 
-export const DefaultButton: ComponentStory<typeof Input> = (args) => (
-  <Input {...args}>按钮</Input>
+export const DefaultInput: ComponentStory<typeof Input> = (args) => (
+  <Input {...args} />
 );
-DefaultButton.storyName = "默认输入框";
+DefaultInput.storyName = "默认输入框";
+DefaultInput.args = {
+  placeholder: "请输入",
+};
 
-export const ButtonType = () => (
+export const InputSize: ComponentStory<typeof Input> = (args) => (
   <>
-    <Input>默认按钮</Input>
+    <Input size="lg" placeholder="大输入框" {...args} />
+    <Input placeholder="默认大小的输入框" {...args} />
+    <Input size="sm" placeholder="小输入框" {...args} />
   </>
 );
-ButtonType.storyName = "按钮类型";
-ButtonType.parameters = {
+InputSize.storyName = "输入框尺寸";
+InputSize.parameters = {
   docs: {
     description: {
-      story: "按钮有四种类型：默认按钮、主要按钮、危险按钮和链接按钮。",
+      story: "输入框有大、中、小三种尺寸，默认尺寸为中。",
     },
   },
 };
 
-export const ButtonSize = () => (
-  <>
-    <Input size="lg">大</Input>
-    <Input>中</Input>
-    <Input size="sm">小</Input>
-  </>
-);
-ButtonSize.storyName = "按钮尺寸";
-ButtonSize.parameters = {
+export const InputAffix = () => {
+  const [searchWord, setSearchWord] = useState("");
+  const searchIcon = (
+    <Icon
+      icon={solid("search")}
+      style={{ cursor: "pointer" }}
+      onClick={() => {
+        window.open("https://cn.bing.com/search?q=" + searchWord, "_blank");
+      }}
+    />
+  );
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const eyeIcon = (
+    <Icon
+      icon={solid("eye")}
+      style={{ cursor: "pointer" }}
+      onClick={() => setPasswordVisible(true)}
+    />
+  );
+  const eyeSlashIcon = (
+    <Icon
+      icon={solid("eye-slash")}
+      style={{ cursor: "pointer" }}
+      onClick={() => setPasswordVisible(false)}
+    />
+  );
+  return (
+    <>
+      <Input
+        placeholder="搜索"
+        suffix={searchIcon}
+        value={searchWord}
+        onChange={(e) => {
+          setSearchWord(e.target.value);
+        }}
+      />
+      <Input placeholder="用户名" prefix={<Icon icon={solid("user")} />} />
+      <Input
+        placeholder="密码"
+        suffix={passwordVisible ? eyeSlashIcon : eyeIcon}
+        type={passwordVisible ? "text" : "password"}
+      />
+    </>
+  );
+};
+InputAffix.storyName = "前/后缀标签";
+InputAffix.parameters = {
   docs: {
     description: {
-      story: "按钮有大、中、小三种尺寸，默认尺寸为中。",
+      story: "可在输入框内加入前缀或后缀图标。",
     },
   },
 };
 
-export const ButtonDisabled = () => (
+export const InputAppend = () => {
+  return (
+    <>
+      <Input placeholder="网址" prepend="http://" append=".com" />
+      <Input
+        defaultValue="git@github.com"
+        append={<Icon icon={solid("copy")} />}
+      />
+    </>
+  );
+};
+InputAppend.storyName = "前/后置标签";
+InputAppend.parameters = {
+  docs: {
+    description: {
+      story: "可在输入框左右侧加入前置或后置标签，形成固定搭配。",
+    },
+  },
+};
+
+export const InputDisabled = () => (
   <>
-    <Input disabled>默认按钮 禁用</Input>
+    <Input disabled />
   </>
 );
-ButtonDisabled.storyName = "禁用状态";
-ButtonDisabled.parameters = {
+InputDisabled.storyName = "禁用状态";
+InputDisabled.parameters = {
   docs: {
     description: {
       story: "添加 `disabled` 属性可将按钮设置为禁用状态。",

@@ -26,3 +26,17 @@
   flex-direction: column;
   text-align: center;
 }
+
+.story-iconTabs {
+  .rui-icon{
+    margin-right: 0.5rem;
+  }
+}
+
+.story-inputList{
+  display: inline-flex;
+  flex-direction: column;
+  .rui-input-wrapper{
+    margin-bottom: 1rem;
+  }
+}

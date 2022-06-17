@@ -61,7 +61,7 @@ AlertClosable.parameters = {
 };
 
 export const AlertDescription = Template.bind({});
-AlertDescription.storyName = "辅助描述的警告";
+AlertDescription.storyName = "带辅助描述的警告";
 AlertDescription.args = {
   title: "添加辅助描述的方法",
   description: "设置参数description，可为警告添加详细描述。".repeat(8),

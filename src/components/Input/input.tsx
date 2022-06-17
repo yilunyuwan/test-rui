@@ -1,4 +1,8 @@
-import React, { InputHTMLAttributes } from "react";
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  InputHTMLAttributes,
+} from "react";
 import classNames from "classnames";
 import { scopedClass } from "../../helpers/utils";
 
@@ -13,6 +17,7 @@ interface InputProps
   prepend?: React.ReactElement | string;
   append?: React.ReactElement | string;
   className?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 export const Input: React.FC<InputProps> = (props) => {
@@ -25,8 +30,10 @@ export const Input: React.FC<InputProps> = (props) => {
     append,
     className,
     style,
+    onChange,
     ...restProps
   } = props;
+  const filteredChange = disabled ? () => {} : onChange;
   const sc = scopedClass("input");
   const wrapperClasses = classNames(className, sc("wrapper"), {
     [sc("wrapper", size || "")]: size,
@@ -49,7 +56,12 @@ export const Input: React.FC<InputProps> = (props) => {
       ) : null}
       <label className={affixClasses}>
         {prefix ? <span className={sc("prefix")}>{prefix}</span> : null}
-        <input disabled={disabled} className={sc()} {...restProps} />
+        <input
+          disabled={disabled}
+          className={sc()}
+          onChange={filteredChange}
+          {...restProps}
+        />
         {suffix ? <span className={sc("suffix")}>{suffix}</span> : null}
       </label>
       {append ? (

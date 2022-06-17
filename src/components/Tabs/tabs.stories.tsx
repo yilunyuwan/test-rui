@@ -78,7 +78,6 @@ export const IconTabs: ComponentStory<typeof Tabs> = (args) => {
   );
 };
 IconTabs.storyName = "带图标的标签";
-
 IconTabs.parameters = {
   docs: {
     source: {
@@ -86,3 +85,10 @@ IconTabs.parameters = {
     },
   },
 };
+IconTabs.decorators = [
+  (Story) => (
+    <div className="story-iconTabs">
+      <Story />
+    </div>
+  ),
+];

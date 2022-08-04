@@ -1,10 +1,4 @@
-import React, {
-  CSSProperties,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { CSSProperties, forwardRef, useEffect } from "react";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import classNames from "classnames";

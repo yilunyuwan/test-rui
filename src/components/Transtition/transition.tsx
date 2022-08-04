@@ -10,15 +10,23 @@ type AnimationType =
 
 type TransitionProps = CSSTransitionProps & {
   animation?: AnimationType;
+  requireWrapper?: boolean;
 };
 export const Transition: React.FC<TransitionProps> = (props) => {
-  const { animation, classNames, children, ...restProps } = props;
+  const { animation, requireWrapper, classNames, children, ...restProps } =
+    props;
+  const content =
+    requireWrapper && typeof children === "object" ? (
+      <div>{children}</div>
+    ) : (
+      children
+    );
   return (
     <CSSTransition
       {...restProps}
       classNames={classNames ? classNames : animation}
     >
-      {children}
+      {content}
     </CSSTransition>
   );
 };
@@ -26,4 +34,5 @@ export const Transition: React.FC<TransitionProps> = (props) => {
 Transition.defaultProps = {
   unmountOnExit: true,
   appear: true,
+  requireWrapper: false,
 };

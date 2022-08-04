@@ -6,7 +6,7 @@ import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default {
-  title: "视图/标签页 Tabs",
+  title: "导航/标签页 Tabs",
   component: Tabs,
   argTypes: {
     defaultIndex: {

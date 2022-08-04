@@ -1,15 +1,15 @@
 import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 import { insertSpaceInButton, scopedClass } from "../../helpers/utils";
+import { ComponentSize } from "../../helpers/types";
 
 type ButtonType = "primary" | "danger" | "default" | "link";
-type ButtonSize = "lg" | "sm";
 
 interface BaseButtonProps {
   children: React.ReactNode;
   className?: string;
   btnType?: ButtonType;
-  size?: ButtonSize;
+  size?: ComponentSize;
   /** 链接地址，仅当`btnType`为`"link"`时有效 */
   href?: string;
   disabled?: boolean;

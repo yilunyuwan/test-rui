@@ -33,10 +33,22 @@
   }
 }
 
-.story-inputList{
-  display: inline-flex;
+.story-inputList {
+  display: flex;
   flex-direction: column;
+  width: 300px;
   .rui-input-wrapper{
     margin-bottom: 1rem;
   }
+}
+
+.story-autoComplete {
+  width: 300px;
+  height: 18rem;
+  .rui-autoComplete-wrapper {
+    margin-bottom: .5rem;
+  }
+ .story-error {
+   color: #dc3545;
+ }
 }

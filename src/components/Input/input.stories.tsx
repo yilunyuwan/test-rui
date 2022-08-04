@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Input } from "./input";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import Button from "../Button/button";
 
 export default {
   title: "表单/输入框 Input",
@@ -20,9 +19,6 @@ export default {
     },
     suffix: {
       control: false,
-    },
-    onChange: {
-      table: { disable: true },
     },
   },
   decorators: [
@@ -141,7 +137,7 @@ InputAppend.parameters = {
 
 export const InputDisabled = () => (
   <>
-    <Input disabled />
+    <Input disabled value="禁用状态" />
   </>
 );
 InputDisabled.storyName = "禁用状态";

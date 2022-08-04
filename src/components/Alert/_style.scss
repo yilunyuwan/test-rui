@@ -1,5 +1,4 @@
 .rui-alert {
-  min-width: 26rem;
   width: 100%;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
@@ -16,20 +15,11 @@
     font-size:$font-size-sm;
   }
 
-  &-success {
-    @include alert-style($success, $white)
-  }
-
-  &-default {
-    @include alert-style($primary, $white)
-  }
-
-  &-warning {
-    @include alert-style($warning, $white)
-  }
-
-  &-danger {
-    @include alert-style($danger, $white)
+  $alert-status: ('success': $success, 'default': $primary, 'warning': $warning, 'danger': $danger);
+  @each $state-string, $state-variable in $alert-status{
+    &-#{$state-string}{
+      @include alert-style($state-variable, $white)
+    }
   }
 
   &-close{

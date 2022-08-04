@@ -1,17 +1,16 @@
 import React, {
-  ChangeEvent,
   ChangeEventHandler,
+  forwardRef,
   InputHTMLAttributes,
 } from "react";
 import classNames from "classnames";
 import { scopedClass } from "../../helpers/utils";
+import { ComponentSize } from "../../helpers/types";
 
-type InputSize = "lg" | "sm";
-
-interface InputProps
+export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLElement>, "size" | "prefix"> {
   disabled?: boolean;
-  size?: InputSize;
+  size?: ComponentSize;
   prefix?: React.ReactElement | string;
   suffix?: React.ReactElement | string;
   prepend?: React.ReactElement | string;
@@ -20,7 +19,7 @@ interface InputProps
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
-export const Input: React.FC<InputProps> = (props) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     disabled,
     size,
@@ -36,7 +35,7 @@ export const Input: React.FC<InputProps> = (props) => {
   const filteredChange = disabled ? () => {} : onChange;
   const sc = scopedClass("input");
   const wrapperClasses = classNames(className, sc("wrapper"), {
-    [sc("wrapper", size || "")]: size,
+    [sc("wrapper", size)]: size,
   });
   const affixClasses = classNames(sc("affix-wrapper"), {
     [sc("has-prepend")]: prepend,
@@ -44,9 +43,9 @@ export const Input: React.FC<InputProps> = (props) => {
   });
   return (
     <span
+      ref={ref}
       className={wrapperClasses}
       tabIndex={disabled ? -1 : 0}
-      aria-disabled={disabled}
       style={style}
     >
       {prepend ? (
@@ -54,7 +53,7 @@ export const Input: React.FC<InputProps> = (props) => {
           {prepend}
         </span>
       ) : null}
-      <label className={affixClasses}>
+      <span className={affixClasses} aria-disabled={disabled}>
         {prefix ? <span className={sc("prefix")}>{prefix}</span> : null}
         <input
           disabled={disabled}
@@ -63,12 +62,14 @@ export const Input: React.FC<InputProps> = (props) => {
           {...restProps}
         />
         {suffix ? <span className={sc("suffix")}>{suffix}</span> : null}
-      </label>
+      </span>
       {append ? (
         <span className={classNames(sc("addon"), sc("append"))}>{append}</span>
       ) : null}
     </span>
   );
-};
+});
 
-Input.defaultProps = {};
+Input.defaultProps = {
+  disabled: false,
+};

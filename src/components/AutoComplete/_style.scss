@@ -1,0 +1,59 @@
+.rui-autoComplete-wrapper{
+  position: relative;
+  .rui-autoComplete-list{
+    background: $input-bg;
+    width: 100%;
+    max-height: 16rem;
+    min-height:0;
+    overflow-y: auto;
+    position: absolute;
+    z-index:3;
+    top: calc(.3rem + 100%);
+    left:0;
+    list-style: none;
+    margin-bottom: 0;
+    font-size: $input-font-size;
+    border: $input-border-width solid $input-border-color;
+    box-shadow: $menu-box-shadow;
+    border-radius: $input-border-radius;
+    padding: 0;
+    color: $input-group-addon-color;
+    transition: height 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    .rui-autoComplete-item{
+      border: $input-border-width solid transparent;
+      padding: $input-padding-y $input-padding-x;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:hover, &-candidate{
+        background: $autoComplete-selected-item-bg;
+      }
+      &:first-of-type{
+        margin-top:$input-padding-y
+      }
+      &:last-of-type{
+        margin-bottom: $input-padding-y;
+      }
+    }
+    &-lg{
+      font-size: $input-font-size-lg;
+      border-radius: $input-border-radius-lg;
+      .rui-autoComplete-item{
+        padding: $input-padding-y-lg $input-padding-x-lg;
+      }
+    }
+    &-sm{
+      font-size: $input-font-size-sm;
+      border-radius: $input-border-radius-sm;
+      .rui-autoComplete-item{
+        padding: $input-padding-y-sm $input-padding-x-sm;
+      }
+    }
+  }
+}
+
+.rui-autoComplete-wrapper  .rui-autoComplete-list > .rui-autoComplete-loadingIcon {
+  margin: 1rem auto;
+  text-align: center;
+  color: $gray-500;
+}

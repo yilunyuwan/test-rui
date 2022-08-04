@@ -2,7 +2,7 @@ import React from "react";
 
 const libName = "rui";
 export const scopedClass = (scope: string) => {
-  return (name?: string, ...others: string[]) =>
+  return (name?: string, ...others: (string | undefined)[]) =>
     [libName, scope, name, ...others].filter(Boolean).join("-");
 };
 

@@ -22,6 +22,7 @@
       pointer-events: none;
     }
   }
+
   &-lg{
     @include component-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg)
   }

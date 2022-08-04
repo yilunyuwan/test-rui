@@ -17,6 +17,11 @@ export const argTypes = {
       disable: true,
     },
   },
+  onChange: {
+    table: {
+      disable: true,
+    },
+  },
 };
 
 export const parameters = {
@@ -32,7 +37,13 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ["基础", "视图"],
+      order: [
+        "基础",
+        "表单",
+        ["输入框 Input", "自动提示 AutoComplete"],
+        "导航",
+        ["菜单 Menu", "标签页 Tabs"],
+      ],
     },
   },
   docs: {

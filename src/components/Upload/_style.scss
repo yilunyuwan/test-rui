@@ -1,0 +1,67 @@
+.rui-upload {
+
+  .rui-upload-fileList {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    .rui-upload-fileList-item {
+      position: relative;
+      margin-top: 0.5rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      }
+
+      .rui-upload-fileList-item-info {
+        margin-right: 2rem;
+        &-status {
+          > .rui-icon {
+            margin: 0 0.5rem;
+          }
+        }
+        &-name {
+          cursor: pointer;
+
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          $file-status: ('success': $success, 'ready': $primary, 'uploading': $primary, 'error': $danger);
+          @each $status, $color in $file-status {
+            &.uploadFile-#{$status} {
+              @include uploadFile-name-color($color)
+            }
+          }
+        }
+      }
+
+
+
+      .rui-upload-fileList-item-action {
+        position:absolute;
+        top:0;
+        right:0;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+        >.rui-icon{
+          margin-right: 0.5rem;
+          color: $secondary;
+          &:hover {
+            color: $dark;
+            transition: color 250ms ease-in-out;
+          }
+        }
+      }
+    }
+
+    li.rui-upload-fileList-item:hover {
+      background-color: $upload-fileListItem-hover-bg;
+      border-radius: $input-border-radius;
+      .rui-upload-fileList-item-action {
+        opacity: 1;
+      }
+    }
+
+}
+

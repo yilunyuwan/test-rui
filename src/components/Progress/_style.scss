@@ -1,0 +1,49 @@
+.rui-progress {
+  display: flex;
+  align-items: center;
+  &-outer {
+    flex: 1;
+    border-radius: $progress-border-radius;
+    background: $progress-bg;
+    position: relative;
+
+  }
+
+  &-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: $progress-bar-transition;
+    border-radius: $progress-border-radius;
+    height: 100%;
+
+  }
+
+  @each $name, $value in $theme-colors{
+     &-#{$name} {
+       .rui-progress-inner{
+         background: $value;
+       }
+    }
+  }
+
+  &-text {
+    display: inline-block;
+    font-size: $progress-font-size;
+    width: 3em;
+    margin-left: 10px;
+  }
+
+  &-status-success {
+    .rui-progress-inner{
+      background: $success;
+    }
+  }
+
+  &-status-exception {
+    .rui-progress-inner{
+      background: $danger;
+    }
+  }
+}
+

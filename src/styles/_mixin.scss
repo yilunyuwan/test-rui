@@ -82,3 +82,8 @@
   border-top-right-radius: $radius;
   border-bottom-right-radius: $radius;
 }
+
+
+@mixin uploadFile-name-color($color) {
+  color: $color
+}

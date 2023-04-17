@@ -6,7 +6,7 @@ import {
 import { scopedClass } from "../../helpers/utils";
 import classNames from "classnames";
 
-type ThemeProps =
+export type ThemeProps =
   | "primary"
   | "secondary"
   | "success"

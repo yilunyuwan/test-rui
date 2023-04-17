@@ -105,7 +105,7 @@ export const ThemeIcons = ({ size }: IconProps) => (
     <code>dark</code>
   </>
 );
-ThemeIcons.storyName = "不同主题的图标";
+ThemeIcons.storyName = "图标样式";
 ThemeIcons.parameters = {
   docs: {
     source: { type: "code" },
@@ -157,7 +157,7 @@ export const SizeIcons = ({ theme }: IconProps) => (
     </div>
   </div>
 );
-SizeIcons.storyName = "不同尺寸的图标";
+SizeIcons.storyName = "图标尺寸";
 SizeIcons.parameters = {
   docs: {
     source: { type: "code" },

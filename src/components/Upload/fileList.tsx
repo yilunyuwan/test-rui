@@ -1,5 +1,4 @@
 import React from "react";
-
 import { scopedClass } from "../../helpers/utils";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
@@ -15,13 +14,18 @@ interface FileListProps {
 export const FileList: React.FC<FileListProps> = (props) => {
   const { fileList, onRemove } = props;
   const sc = scopedClass("upload-fileList");
-
+  const showProgress = (status: string) =>
+    status === "ready" || status === "uploading";
   return (
     <ol className={sc()}>
       {fileList.map((file) => (
         <li key={file.uid} className={sc("item")}>
           <span className={sc("item", "info")}>
-            <span className={sc("item", "info", "status")}>
+            <span
+              className={sc("item", "info", "status")}
+              role="img"
+              aria-label={file.status}
+            >
               {statusIcon(file.status)}
             </span>
 
@@ -37,10 +41,15 @@ export const FileList: React.FC<FileListProps> = (props) => {
             </a>
           </span>
 
-          <span className={sc("item", "action")} onClick={() => onRemove(file)}>
+          <span
+            className={sc("item", "action")}
+            onClick={() => onRemove(file)}
+            role="button"
+            aria-label="delete"
+          >
             <Icon icon={solid("xmark")} />
           </span>
-          {file.status === "uploading" && (
+          {showProgress(file.status) && (
             <Progress percentage={file.percentage || 0} />
           )}
         </li>

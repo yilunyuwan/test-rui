@@ -1,6 +1,6 @@
 import { ThemeProps } from "../Icon/icon";
 
-const ThemeArray = [
+export const ThemeArray = [
   "primary",
   "secondary",
   "success",

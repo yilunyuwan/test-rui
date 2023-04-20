@@ -45,7 +45,7 @@ export const DynamicProgress = () => {
   };
   return (
     <>
-      <Progress percentage={percentage}></Progress>
+      <Progress percentage={percentage} />
       <div className="story-buttonList">
         <Button size="sm" onClick={increasePercentage}>
           <Icon icon={solid("plus")} size="xs" />
@@ -58,6 +58,34 @@ export const DynamicProgress = () => {
   );
 };
 DynamicProgress.storyName = "动态进度条展示";
+
+export const ProgressWithoutText = () => {
+  const [percentage, setPercentage] = useState(30);
+  const increasePercentage = () => {
+    if (percentage + 10 <= 100) {
+      setPercentage((prev) => prev + 10);
+    }
+  };
+  const decreasePercentage = () => {
+    if (percentage - 10 >= 0) {
+      setPercentage((prev) => prev - 10);
+    }
+  };
+  return (
+    <>
+      <Progress percentage={percentage} showText={false} />
+      <div className="story-buttonList">
+        <Button size="sm" onClick={increasePercentage}>
+          <Icon icon={solid("plus")} size="xs" />
+        </Button>
+        <Button size="sm" onClick={decreasePercentage}>
+          <Icon icon={solid("minus")} size="xs" />
+        </Button>
+      </div>
+    </>
+  );
+};
+ProgressWithoutText.storyName = "不显示文字的进度条";
 
 export const ProgressStyle = () => (
   <div className="story-progressList">

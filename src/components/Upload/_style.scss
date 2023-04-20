@@ -35,8 +35,6 @@
         }
       }
 
-
-
       .rui-upload-fileList-item-action {
         position:absolute;
         top:0;
@@ -62,6 +60,20 @@
         opacity: 1;
       }
     }
+
+  .rui-upload-dragger {
+    background: $gray-100;
+    border: 1px dashed $gray-300;
+    border-radius: 4px;
+    cursor: pointer;
+    &.isDragOver {
+      border-color: $primary;
+      background: rgba($primary, .1);
+    }
+    &:hover{
+      border-color: $primary;
+    }
+  }
 
 }
 

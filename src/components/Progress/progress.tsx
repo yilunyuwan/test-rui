@@ -1,10 +1,10 @@
 import React from "react";
 import { ThemeProps } from "../Icon/icon";
 import { scopedClass } from "../../helpers/utils";
-import classnames from "classnames";
+import classNames from "classnames";
 import { isThemeProps } from "./utils";
 
-interface ProgressProps {
+export interface ProgressProps {
   percentage: number;
   strokeHeight?: number;
   showText?: boolean;
@@ -16,6 +16,7 @@ interface ProgressProps {
    * */
   strokeColor?: ThemeProps | string;
   status?: "success" | "exception";
+  className?: string;
 }
 
 export const Progress: React.FC<ProgressProps> = (props) => {
@@ -27,6 +28,7 @@ export const Progress: React.FC<ProgressProps> = (props) => {
     strokeColor,
     successColor,
     status,
+    className,
   } = props;
   const sc = scopedClass("progress");
   const processedPercentage =
@@ -41,7 +43,8 @@ export const Progress: React.FC<ProgressProps> = (props) => {
   };
   return (
     <div
-      className={classnames(
+      className={classNames(
+        className,
         sc(),
         { [sc("showText")]: showText },
         { [sc(strokeColor)]: isThemeProps(strokeColor) },
@@ -49,13 +52,14 @@ export const Progress: React.FC<ProgressProps> = (props) => {
         { [sc(`status-success`)]: processedPercentage === 100 }
       )}
       style={style}
+      role="progressbar"
     >
       <div
-        className={classnames(sc("outer"))}
+        className={classNames(sc("outer"))}
         style={{ height: `${strokeHeight}px` }}
       >
         <div
-          className={classnames(sc("inner"))}
+          className={classNames(sc("inner"))}
           style={{
             width: `${processedPercentage}%`,
             background: processedColor(),

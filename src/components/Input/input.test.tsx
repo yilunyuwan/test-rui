@@ -9,7 +9,7 @@ const defaultProps = {
 };
 
 describe("test Input component", () => {
-  it("ender the correct default Input", () => {
+  it("render the correct default Input", () => {
     render(<Input {...defaultProps} />);
     const inputNode = screen.getByPlaceholderText(
       "test-input"

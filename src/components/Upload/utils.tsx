@@ -12,6 +12,13 @@ export interface UploadProps {
   onError?: (error: any, file: File) => void;
   onRemove?: (file: UploadFile) => void;
   children?: React.ReactNode;
+  headers?: { [k: string]: any };
+  name?: string;
+  data?: { [k: string]: any };
+  withCredentials?: boolean;
+  multiple?: boolean;
+  accept?: string;
+  supportDrag?: boolean;
 }
 
 export type UploadFileStatus = "ready" | "uploading" | "success" | "error";

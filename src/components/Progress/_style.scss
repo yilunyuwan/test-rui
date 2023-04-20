@@ -6,7 +6,6 @@
     border-radius: $progress-border-radius;
     background: $progress-bg;
     position: relative;
-
   }
 
   &-inner {
@@ -16,7 +15,6 @@
     transition: $progress-bar-transition;
     border-radius: $progress-border-radius;
     height: 100%;
-
   }
 
   @each $name, $value in $theme-colors{

@@ -53,13 +53,27 @@
  }
 }
 
-.story-upload {
-  width: 300px;
-}
-
 .story-progressList {
   .rui-progress {
     margin-bottom: 8px;
     height: 22px;
   }
+}
+
+.story-upload {
+  width: 300px;
+}
+
+.story-uploadList {
+  .rui-upload {
+    margin-bottom: 1rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+}
+.story-upload-dragger {
+  padding: 1rem;
+  text-align: center;
 }

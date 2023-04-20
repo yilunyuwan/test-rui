@@ -4,13 +4,13 @@ import { Upload } from "./upload";
 import Button from "../Button/button";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { action } from "@storybook/addon-actions";
-import { ButtonType } from "../Button/button.stories";
 
 export default {
   title: "表单/上传 Upload",
   component: Upload,
-  argTypes: {},
+  argTypes: {
+    action: { control: false },
+  },
   decorators: [
     (Story) => (
       <div className="story-upload">
@@ -67,6 +67,79 @@ ClickUpload.parameters = {
   },
 };
 
+export const DragUpload: ComponentStory<typeof Upload> = (args) => (
+  <>
+    <Upload {...args}>
+      <div className="story-upload-dragger">
+        <Icon
+          icon={solid("arrow-up-from-bracket")}
+          size="3x"
+          style={{ marginBottom: "1rem" }}
+        />
+        <div>点击或拖动文件至此区域上传</div>
+      </div>
+    </Upload>
+  </>
+);
+DragUpload.storyName = "拖曳上传";
+DragUpload.args = {
+  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+  supportDrag: true,
+};
+DragUpload.parameters = {
+  docs: {
+    description: {
+      story: "拖动文件至此区域上传，同样也支持点击上传",
+    },
+  },
+};
+
+export const BeforeUpload: ComponentStory<typeof Upload> = (args) => (
+  <>
+    <div className="story-uploadList">
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={checkFileSize}
+      >
+        <Button>
+          <Icon
+            icon={solid("arrow-up-from-bracket")}
+            style={{ marginRight: ".5rem" }}
+          />
+          限制文件小于50kb
+        </Button>
+      </Upload>
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={renameFile}
+      >
+        <Button>
+          <Icon
+            icon={solid("arrow-up-from-bracket")}
+            style={{ marginRight: ".5rem" }}
+          />
+          转换文件名称
+        </Button>
+      </Upload>
+    </div>
+  </>
+);
+BeforeUpload.storyName = "上传前自定义操作";
+BeforeUpload.args = {
+  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+  beforeUpload: checkFileSize,
+};
+
+BeforeUpload.parameters = {
+  docs: {
+    description: {
+      story:
+        "使用<code>beforeUpload</code>可在上传前进行自定义操作，如限制文件大小或转换文件。<br/>" +
+        "<code>beforeUpload</code>的返回值可以是Promise。",
+    },
+  },
+};
+
 export const DefaultFileListUpload: ComponentStory<typeof Upload> = (args) => (
   <>
     <Upload {...args}>
@@ -107,7 +180,8 @@ DefaultFileListUpload.args = {
 DefaultFileListUpload.parameters = {
   docs: {
     description: {
-      story: "可使用 `defaultFileList` 属性来设置已上传的文件列表",
+      story:
+        "可使用 `defaultFileList`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  来设置已上传的文件列表。",
     },
   },
 };

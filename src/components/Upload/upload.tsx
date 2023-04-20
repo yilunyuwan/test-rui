@@ -4,6 +4,7 @@ import classNames from "classnames";
 import axios from "axios";
 import { FileList } from "./fileList";
 import { UploadFile, UploadProps } from "./utils";
+import { DragWrapper } from "./dragWrapper";
 
 export const Upload: React.FC<UploadProps> = (props) => {
   const {
@@ -16,6 +17,13 @@ export const Upload: React.FC<UploadProps> = (props) => {
     onError,
     onRemove,
     children,
+    headers,
+    name,
+    data,
+    withCredentials,
+    multiple,
+    accept,
+    supportDrag,
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
@@ -69,7 +77,12 @@ export const Upload: React.FC<UploadProps> = (props) => {
 
   const post = (file: File) => {
     const formData = new FormData();
-    formData.append(file.name, file);
+    formData.append(name || "file", file);
+    if (data) {
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+      });
+    }
     const _file: UploadFile = {
       uid: "uploadFile" + Date.now(),
       name: file.name,
@@ -83,8 +96,10 @@ export const Upload: React.FC<UploadProps> = (props) => {
     axios
       .post(action, formData, {
         headers: {
+          ...headers,
           "Content-Type": "multipart/form-data",
         },
+        withCredentials,
         onUploadProgress: (progressEvent) => {
           const percentage = Math.round(
             (progressEvent.loaded * 100) / progressEvent.total
@@ -96,13 +111,11 @@ export const Upload: React.FC<UploadProps> = (props) => {
         },
       })
       .then((resp) => {
-        console.log(resp);
         updateFileAttribute(_file, { status: "success", response: resp });
         if (onSuccess) onSuccess(resp.data, file);
         if (onChange) onChange(file);
       })
       .catch((err) => {
-        console.error(err);
         updateFileAttribute(_file, { status: "error", error: err });
         if (onError) onError(err, file);
         if (onChange) onChange(file);
@@ -113,13 +126,20 @@ export const Upload: React.FC<UploadProps> = (props) => {
   return (
     <div className={sc()}>
       <div className={classNames(sc("input-wrapper"))} onClick={handleClick}>
-        {children}
+        {supportDrag ? (
+          <DragWrapper onFile={uploadFiles}>{children}</DragWrapper>
+        ) : (
+          children
+        )}
         <input
           type="file"
+          alt="fileInput"
           className={classNames(sc("input"))}
           ref={inputRef}
           style={{ display: "none" }}
           onChange={handleChange}
+          multiple={multiple}
+          accept={accept}
         />
       </div>
       <FileList fileList={fileList} onRemove={handleRemove} />

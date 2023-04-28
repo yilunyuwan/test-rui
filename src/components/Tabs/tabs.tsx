@@ -27,7 +27,7 @@ export const TabsContext = React.createContext<ITAbsContext>({
   selectedIndex: defaultProps.defaultIndex,
 });
 
-export const Tabs: React.FC<TabsProps> = (props) => {
+const Tabs: React.FC<TabsProps> = (props) => {
   const {
     defaultIndex = defaultProps.defaultIndex,
     type = defaultProps.type,
@@ -88,3 +88,4 @@ export const Tabs: React.FC<TabsProps> = (props) => {
 };
 
 Tabs.defaultProps = defaultProps;
+export default Tabs;

@@ -1,4 +1,4 @@
-import { Input, InputProps } from "../Input/input";
+import Input, { InputProps } from "../Input/input";
 import React, {
   ChangeEventHandler,
   KeyboardEventHandler,
@@ -22,7 +22,7 @@ export interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
   delay?: number;
 }
 
-export const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
+const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
   const { fetchSuggestion, onSelect, delay, size, ...restProps } = props;
   const [suggestions, setSuggestions] = useState<SuggestionsType>([]);
   const [optionListVisible, setOptionListVisible] = useState(false);
@@ -143,3 +143,5 @@ export const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
 AutoComplete.defaultProps = {
   delay: 300,
 };
+
+export default AutoComplete;

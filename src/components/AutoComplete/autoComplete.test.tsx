@@ -1,4 +1,4 @@
-import { AutoComplete, AutoCompleteProps } from "./autoComplete";
+import AutoComplete, { AutoCompleteProps } from "./autoComplete";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 const testArray = ["ab", "abc", "b", "c"];

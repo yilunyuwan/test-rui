@@ -11,7 +11,7 @@ export interface TabItemProps {
   children?: React.ReactNode;
 }
 
-export const TabItem: React.FC<TabItemProps> = (props) => {
+const TabItem: React.FC<TabItemProps> = (props) => {
   const { label, index, disabled, className, children, ...restProps } = props;
   const context = useContext(TabsContext);
   const handleClick = () => {
@@ -41,3 +41,4 @@ TabItem.displayName = "TabItem";
 TabItem.defaultProps = {
   disabled: false,
 };
+export default TabItem;

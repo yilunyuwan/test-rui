@@ -1,8 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Menu } from "./menu";
-import { SubMenu } from "./subMenu";
-import { MenuItem } from "./menuItem";
+import Menu from "./menu";
+import SubMenu from "./subMenu";
+import MenuItem from "./menuItem";
 
 export default {
   title: "导航/菜单 Menu",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Progress } from "./progress";
+import Progress from "./progress";
 import Icon from "../Icon/icon";
 import Button from "../Button/button";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";

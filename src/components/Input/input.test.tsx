@@ -1,4 +1,4 @@
-import { Input } from "./input";
+import Input from "./input";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";

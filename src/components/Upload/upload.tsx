@@ -6,7 +6,7 @@ import { FileList } from "./fileList";
 import { UploadFile, UploadProps } from "./utils";
 import { DragWrapper } from "./dragWrapper";
 
-export const Upload: React.FC<UploadProps> = (props) => {
+const Upload: React.FC<UploadProps> = (props) => {
   const {
     action,
     defaultFileList,
@@ -146,3 +146,5 @@ export const Upload: React.FC<UploadProps> = (props) => {
     </div>
   );
 };
+
+export default Upload;

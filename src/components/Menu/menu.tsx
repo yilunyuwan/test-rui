@@ -38,7 +38,7 @@ export const MenuContext = React.createContext<IMenuContext>({
   openedIndexes: defaultProps.openedIndexes,
 });
 
-export const Menu: React.FC<MenuProps> = (props) => {
+const Menu: React.FC<MenuProps> = (props) => {
   const {
     mode = defaultProps.mode,
     defaultIndex = defaultProps.defaultIndex,
@@ -92,3 +92,4 @@ export const Menu: React.FC<MenuProps> = (props) => {
 };
 
 Menu.defaultProps = defaultProps;
+export default Menu;

@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Tabs } from "./tabs";
-import { TabItem } from "./tabItem";
+import Tabs from "./tabs";
+import TabItem from "./tabItem";
 import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 

@@ -1,4 +1,4 @@
-import { Progress, ProgressProps } from "./progress";
+import Progress, { ProgressProps } from "./progress";
 import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
 import { scopedClass } from "../../helpers/utils";

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Tabs, TabsProps } from "./tabs";
-import { TabItem } from "./tabItem";
+import Tabs, { TabsProps } from "./tabs";
+import TabItem from "./tabItem";
 import { scopedClass } from "../../helpers/utils";
 import { ReactComponent as CloseIcon } from "../../assets/close.svg";
 

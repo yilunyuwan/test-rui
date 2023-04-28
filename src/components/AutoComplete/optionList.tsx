@@ -4,7 +4,6 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import classNames from "classnames";
 import { scopedClass } from "../../helpers/utils";
 import { Transition } from "../Transtition/transition";
-import { element } from "prop-types";
 import { useForwardRef } from "../../hooks/useForwardRef";
 
 interface OptionListProps {
@@ -69,6 +68,7 @@ export const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
             className={classes_item}
             onClick={() => handleSelect(value)}
             role="option"
+            aria-selected={candidateIndex === index ? true : false}
           >
             {value}
           </li>

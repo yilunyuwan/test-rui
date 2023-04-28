@@ -1,4 +1,4 @@
-import { Upload } from "./upload";
+import Upload from "./upload";
 import { fireEvent, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { UploadProps } from "./utils";

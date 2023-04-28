@@ -19,7 +19,7 @@ export interface ProgressProps {
   className?: string;
 }
 
-export const Progress: React.FC<ProgressProps> = (props) => {
+const Progress: React.FC<ProgressProps> = (props) => {
   const {
     percentage,
     strokeHeight,
@@ -78,3 +78,5 @@ Progress.defaultProps = {
   strokeHeight: 8,
   strokeColor: "primary",
 };
+
+export default Progress;

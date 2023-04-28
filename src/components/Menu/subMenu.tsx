@@ -7,13 +7,13 @@ import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Transition } from "../Transtition/transition";
 
-interface SubMenuProps {
+export interface SubMenuProps {
   title: string;
   index?: string;
   className?: string;
   children?: React.ReactNode;
 }
-export const SubMenu: React.FC<SubMenuProps> = (props) => {
+const SubMenu: React.FC<SubMenuProps> = (props) => {
   const { title, index, className, children, ...restProps } = props;
   const context = useContext(MenuContext);
   const sc_item = scopedClass("menu-item");
@@ -86,3 +86,4 @@ export const SubMenu: React.FC<SubMenuProps> = (props) => {
 };
 
 SubMenu.displayName = "SubMenu";
+export default SubMenu;

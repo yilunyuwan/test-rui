@@ -1,8 +1,8 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { Menu, MenuProps, Mode } from "./menu";
-import { MenuItem } from "./menuItem";
+import Menu, { MenuProps, Mode } from "./menu";
+import MenuItem from "./menuItem";
 import { scopedClass } from "../../helpers/utils";
-import { SubMenu } from "./subMenu";
+import SubMenu from "./subMenu";
 
 const defaultProps = {
   onSelect: jest.fn(),

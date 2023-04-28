@@ -4,7 +4,7 @@ import Icon from "../Icon/icon";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { statusIcon, UploadFile } from "./utils";
 import classNames from "classnames";
-import { Progress } from "../Progress/progress";
+import Progress from "../Progress/progress";
 
 interface FileListProps {
   fileList: UploadFile[];

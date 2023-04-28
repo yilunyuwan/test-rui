@@ -1,6 +1,7 @@
 import React, { DragEventHandler, useState } from "react";
 import { scopedClass } from "../../helpers/utils";
 import classnames from "classnames";
+
 interface DragProps {
   children: React.ReactNode;
   onFile: (fileList: FileList) => void;

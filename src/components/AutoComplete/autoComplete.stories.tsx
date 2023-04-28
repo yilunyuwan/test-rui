@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { AutoComplete } from "./autoComplete";
+import AutoComplete from "./autoComplete";
 import Icon from "../Icon/icon";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Alert from "../Alert/alert";

@@ -9,7 +9,7 @@ export interface MenuItemProps {
   children?: React.ReactNode;
   className?: string;
 }
-export const MenuItem: React.FC<MenuItemProps> = (props) => {
+const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { disabled, children, className, index, ...restProps } = props;
   const sc = scopedClass("menu-item");
   const context = useContext(MenuContext);
@@ -29,3 +29,4 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
 };
 
 MenuItem.displayName = "MenuItem";
+export default MenuItem;

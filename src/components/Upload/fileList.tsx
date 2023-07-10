@@ -1,7 +1,6 @@
 import React from "react";
 import { scopedClass } from "../../helpers/utils";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { statusIcon, UploadFile } from "./utils";
 import classNames from "classnames";
 import Progress from "../Progress/progress";
@@ -47,7 +46,7 @@ export const FileList: React.FC<FileListProps> = (props) => {
             role="button"
             aria-label="delete"
           >
-            <Icon icon={solid("xmark")} />
+            <Icon icon="xmark" />
           </span>
           {showProgress(file.status) && (
             <Progress percentage={file.percentage || 0} />

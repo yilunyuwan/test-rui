@@ -1,48 +1,51 @@
 {
   "name": "rui",
   "version": "0.1.0",
-  "private": true,
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
-  "browser": {
-    "path": false
+  "description": "React UI library",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "UI",
+    "React"
+  ],
+  "homepage": "https://yilunyuwan.gitee.io/rui",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/yilunyuwan/RUI"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.0",
-    "@types/node": "^16.11.33",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.3",
-    "@types/react-transition-group": "^4.4.4",
     "axios": "^0.27.2",
-    "babel-plugin-macros": "^3.1.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.2",
-    "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "scripts": {
-    "start": "react-app-rewired start",
-    "clean": "rimraf ./build",
+    "start": "react-scripts start",
+    "clean": "rimraf ./dist",
     "build": "npm run clean && npm run build-ts && npm run build-css",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./build/index.css",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "deploy": "sh scripts/deploy.sh"
+    "deploy": "sh scripts/deploy.sh",
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -76,7 +79,6 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
-    "@craco/craco": "^7.1.0",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
@@ -87,6 +89,14 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.0",
+    "@types/node": "^16.11.33",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.3",
+    "@types/react-transition-group": "^4.4.4",
     "@types/classnames": "^2.3.1",
     "babel-plugin-named-exports-order": "^0.0.2",
     "classnames": "^2.3.1",
@@ -99,7 +109,10 @@
     "prettier": "2.6.2",
     "prop-types": "^15.8.1",
     "rimraf": "^5.0.0",
-    "webpack": "^5.81.0"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.6.4"
   },
   "lint-staged": {
     "*.{js,css,md,ts,tsx}": "prettier --write"

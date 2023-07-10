@@ -1,7 +1,6 @@
 import Input from "./input";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const defaultProps = {
   onChange: jest.fn(),
@@ -45,8 +44,8 @@ describe("test Input component", () => {
   });
 
   it("render prefix and suffix element", () => {
-    const userIcon = <Icon icon={solid("user")} data-testid="userIcon" />;
-    const lockIcon = <Icon icon={solid("lock")} data-testid="lockIcon" />;
+    const userIcon = <Icon icon="user" data-testid="userIcon" />;
+    const lockIcon = <Icon icon="lock" data-testid="lockIcon" />;
     render(<Input placeholder="site" prefix={userIcon} suffix={lockIcon} />);
     expect(screen.getByTestId("userIcon")).toBeInTheDocument();
     expect(screen.getByTestId("lockIcon")).toBeInTheDocument();

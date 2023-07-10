@@ -2,7 +2,6 @@ import React, { useCallback, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import AutoComplete from "./autoComplete";
 import Icon from "../Icon/icon";
-import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import Alert from "../Alert/alert";
 
 export default {
@@ -94,7 +93,7 @@ export const AsyncAutoComplete: ComponentStory<typeof AutoComplete> = (
       <AutoComplete
         {...args}
         fetchSuggestion={handleFetch}
-        suffix={<Icon icon={brands("github")} />}
+        suffix={<Icon icon="github" />}
       />
       {error && <div className="story-error">{error.message}</div>}
     </>

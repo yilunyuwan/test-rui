@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { scopedClass } from "../../helpers/utils";
 import { MenuItemProps } from "./menuItem";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Transition } from "../Transtition/transition";
 
 export interface SubMenuProps {
@@ -76,7 +75,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     <li className={classes_item} {...restProps} {...hoverEvents}>
       <div className={sc_submenu("title")} {...clickEvent}>
         {title}
-        <Icon icon={solid("angle-down")} />
+        <Icon icon="angle-down" />
       </div>
       <Transition in={submenuVisible} timeout={300} animation="zoom-in-top">
         <ul className={classes_submenu}>{filterChildren()}</ul>

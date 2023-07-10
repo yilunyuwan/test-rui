@@ -1,11 +1,7 @@
 import React from "react";
 import { ComponentMeta } from "@storybook/react";
 import Icon, { IconProps } from "./icon";
-import {
-  brands,
-  regular,
-  solid,
-} from "@fortawesome/fontawesome-svg-core/import.macro";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export default {
   title: "基础/图标 Icon",
@@ -36,7 +32,6 @@ export default {
     docs: {
       description: {
         component: `基于 [React Font Awesome](https://github.com/FortAwesome/react-fontawesome) 提供了一套常用的图标集合。<br />
-                    通过 <code>@fortawesome/react-fontawesome</code> 及 <code>@fortawesome/fontawesome-svg-core/import.macro</code> 来动态引入所需图标。<br />
                     通过设置 <code>Icon</code> 组件的 <code>icon</code> 属性来指定图标名称。<br/>
                     可用的图标集合详见 [Free Icons](https://fontawesome.com/search?m=free)<br/>
                     支持的样式属性详见 [Adding Icon Styling with React](https://fontawesome.com/v6/docs/web/use-with/react/style)
@@ -49,12 +44,13 @@ export default {
   },
 } as ComponentMeta<typeof Icon>;
 
+const regularWink = "fa-regular fa-face-grin-wink" as IconProp;
 export const DefaultIcons = ({ size, theme }: IconProps) => (
   <>
-    <Icon icon={solid("angle-left")} size={size} theme={theme} />
-    <Icon icon={brands("github")} size={size} theme={theme} />
-    <Icon icon={regular("face-grin-wink")} size={size} theme={theme} />
-    <Icon icon={solid("angle-right")} size={size} theme={theme} />
+    <Icon icon="angle-left" size={size} theme={theme} />
+    <Icon icon="github" size={size} theme={theme} />
+    <Icon icon={regularWink} size={size} theme={theme} />
+    <Icon icon="angle-right" size={size} theme={theme} />
   </>
 );
 DefaultIcons.storyName = "图标";
@@ -87,21 +83,21 @@ DefaultIcons.decorators = [
 
 export const ThemeIcons = ({ size }: IconProps) => (
   <>
-    <Icon icon={regular("face-grin-wink")} theme="success" size={size} />
+    <Icon icon={regularWink} theme="success" size={size} />
     <code>success</code>
-    <Icon icon={regular("face-grin-wink")} theme="danger" size={size} />
+    <Icon icon={regularWink} theme="danger" size={size} />
     <code>danger</code>
-    <Icon icon={regular("face-grin-wink")} theme="warning" size={size} />
+    <Icon icon={regularWink} theme="warning" size={size} />
     <code>warning</code>
-    <Icon icon={regular("face-grin-wink")} theme="primary" size={size} />
+    <Icon icon={regularWink} theme="primary" size={size} />
     <code>primary</code>
-    <Icon icon={regular("face-grin-wink")} theme="secondary" size={size} />
+    <Icon icon={regularWink} theme="secondary" size={size} />
     <code>secondary</code>
-    <Icon icon={regular("face-grin-wink")} theme="info" size={size} />
+    <Icon icon={regularWink} theme="info" size={size} />
     <code>info</code>
-    <Icon icon={regular("face-grin-wink")} theme="light" size={size} />
+    <Icon icon={regularWink} theme="light" size={size} />
     <code>light</code>
-    <Icon icon={regular("face-grin-wink")} theme="dark" size={size} />
+    <Icon icon={regularWink} theme="dark" size={size} />
     <code>dark</code>
   </>
 );
@@ -117,41 +113,41 @@ export const SizeIcons = ({ theme }: IconProps) => (
   <div>
     <div className="story-iconRow">
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="xs" />
+        <Icon icon={regularWink} theme={theme} size="xs" />
         <code>xs</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="sm" />
+        <Icon icon={regularWink} theme={theme} size="sm" />
         <code>sm</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="1x" />
+        <Icon icon={regularWink} theme={theme} size="1x" />
         <code>1x</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="lg" />
+        <Icon icon={regularWink} theme={theme} size="lg" />
         <code>lg</code>
       </span>
     </div>
     <div className="story-iconRow">
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="1x" />
+        <Icon icon={regularWink} theme={theme} size="1x" />
         <code>1x</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="2x" />
+        <Icon icon={regularWink} theme={theme} size="2x" />
         <code>2x</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="3x" />
+        <Icon icon={regularWink} theme={theme} size="3x" />
         <code>3x</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="5x" />
+        <Icon icon={regularWink} theme={theme} size="5x" />
         <code>5x</code>
       </span>
       <span className="story-iconWrapper">
-        <Icon icon={regular("face-grin-wink")} theme={theme} size="8x" />
+        <Icon icon={regularWink} theme={theme} size="8x" />
         <code>8x</code>
       </span>
     </div>

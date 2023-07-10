@@ -1,6 +1,5 @@
 import React, { CSSProperties, forwardRef, useEffect } from "react";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import classNames from "classnames";
 import { scopedClass } from "../../helpers/utils";
 import { Transition } from "../Transtition/transition";
@@ -55,7 +54,7 @@ export const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
     const ulContent = () => {
       const loadingIcon = (
         <div className={sc("loadingIcon")}>
-          <Icon icon={solid("spinner")} size="2x" spin />
+          <Icon icon="spinner" size="2x" spin />
         </div>
       );
       const suggestionItems = suggestions.map((value, index) => {

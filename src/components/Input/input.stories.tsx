@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Input from "./input";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default {
   title: "表单/输入框 Input",
@@ -65,7 +64,7 @@ export const InputAffix = () => {
   const [searchWord, setSearchWord] = useState("");
   const searchIcon = (
     <Icon
-      icon={solid("search")}
+      icon="search"
       style={{ cursor: "pointer" }}
       onClick={() => {
         window.open("https://cn.bing.com/search?q=" + searchWord, "_blank");
@@ -75,14 +74,14 @@ export const InputAffix = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const eyeIcon = (
     <Icon
-      icon={solid("eye")}
+      icon="eye"
       style={{ cursor: "pointer" }}
       onClick={() => setPasswordVisible(true)}
     />
   );
   const eyeSlashIcon = (
     <Icon
-      icon={solid("eye-slash")}
+      icon="eye-slash"
       style={{ cursor: "pointer" }}
       onClick={() => setPasswordVisible(false)}
     />
@@ -97,7 +96,7 @@ export const InputAffix = () => {
           setSearchWord(e.target.value);
         }}
       />
-      <Input placeholder="用户名" prefix={<Icon icon={solid("user")} />} />
+      <Input placeholder="用户名" prefix={<Icon icon="user" />} />
       <Input
         placeholder="密码"
         suffix={passwordVisible ? eyeSlashIcon : eyeIcon}
@@ -119,10 +118,7 @@ export const InputAppend = () => {
   return (
     <>
       <Input placeholder="网址" prepend="http://" append=".com" />
-      <Input
-        defaultValue="git@github.com"
-        append={<Icon icon={solid("copy")} />}
-      />
+      <Input defaultValue="git@github.com" append={<Icon icon="copy" />} />
     </>
   );
 };

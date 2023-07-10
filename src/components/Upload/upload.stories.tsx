@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Upload from "./upload";
 import Button from "../Button/button";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default {
   title: "表单/上传 Upload",
@@ -46,10 +45,7 @@ export const ClickUpload: ComponentStory<typeof Upload> = (args) => (
   <>
     <Upload {...args}>
       <Button>
-        <Icon
-          icon={solid("arrow-up-from-bracket")}
-          style={{ marginRight: ".5rem" }}
-        />
+        <Icon icon="arrow-up-from-bracket" style={{ marginRight: ".5rem" }} />
         点击上传
       </Button>
     </Upload>
@@ -72,7 +68,7 @@ export const DragUpload: ComponentStory<typeof Upload> = (args) => (
     <Upload {...args}>
       <div className="story-upload-dragger">
         <Icon
-          icon={solid("arrow-up-from-bracket")}
+          icon="arrow-up-from-bracket"
           size="3x"
           style={{ marginBottom: "1rem" }}
         />
@@ -102,10 +98,7 @@ export const BeforeUpload: ComponentStory<typeof Upload> = (args) => (
         beforeUpload={checkFileSize}
       >
         <Button>
-          <Icon
-            icon={solid("arrow-up-from-bracket")}
-            style={{ marginRight: ".5rem" }}
-          />
+          <Icon icon="arrow-up-from-bracket" style={{ marginRight: ".5rem" }} />
           限制文件小于50kb
         </Button>
       </Upload>
@@ -114,10 +107,7 @@ export const BeforeUpload: ComponentStory<typeof Upload> = (args) => (
         beforeUpload={renameFile}
       >
         <Button>
-          <Icon
-            icon={solid("arrow-up-from-bracket")}
-            style={{ marginRight: ".5rem" }}
-          />
+          <Icon icon="arrow-up-from-bracket" style={{ marginRight: ".5rem" }} />
           转换文件名称
         </Button>
       </Upload>
@@ -144,10 +134,7 @@ export const DefaultFileListUpload: ComponentStory<typeof Upload> = (args) => (
   <>
     <Upload {...args}>
       <Button>
-        <Icon
-          icon={solid("arrow-up-from-bracket")}
-          style={{ marginRight: ".5rem" }}
-        />
+        <Icon icon="arrow-up-from-bracket" style={{ marginRight: ".5rem" }} />
         点击上传
       </Button>
     </Upload>

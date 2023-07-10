@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Progress from "./progress";
 import Icon from "../Icon/icon";
 import Button from "../Button/button";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default {
   title: "视图/进度条 Progress",
@@ -48,10 +47,10 @@ export const DynamicProgress = () => {
       <Progress percentage={percentage} />
       <div className="story-buttonList">
         <Button size="sm" onClick={increasePercentage}>
-          <Icon icon={solid("plus")} size="xs" />
+          <Icon icon="plus" size="xs" />
         </Button>
         <Button size="sm" onClick={decreasePercentage}>
-          <Icon icon={solid("minus")} size="xs" />
+          <Icon icon="minus" size="xs" />
         </Button>
       </div>
     </>
@@ -76,10 +75,10 @@ export const ProgressWithoutText = () => {
       <Progress percentage={percentage} showText={false} />
       <div className="story-buttonList">
         <Button size="sm" onClick={increasePercentage}>
-          <Icon icon={solid("plus")} size="xs" />
+          <Icon icon="plus" size="xs" />
         </Button>
         <Button size="sm" onClick={decreasePercentage}>
-          <Icon icon={solid("minus")} size="xs" />
+          <Icon icon="minus" size="xs" />
         </Button>
       </div>
     </>

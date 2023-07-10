@@ -2,7 +2,6 @@ import React, { MouseEventHandler, useState } from "react";
 import classnames from "classnames";
 import { scopedClass } from "../../helpers/utils";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { Transition } from "../Transtition/transition";
 
 type AlertType = "default" | "success" | "danger" | "warning";
@@ -52,7 +51,7 @@ export const Alert: React.FC<AlertProps> = (props) => {
             aria-label="closeButton"
             onClick={handleClose}
           >
-            <Icon icon={solid("xmark")} />
+            <Icon icon="xmark" />
           </span>
         )}
       </div>

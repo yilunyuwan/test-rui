@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Tabs from "./tabs";
 import TabItem from "./tabItem";
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default {
   title: "导航/标签页 Tabs",
@@ -51,19 +50,19 @@ VerticalTabs.args = {
 export const IconTabs: ComponentStory<typeof Tabs> = (args) => {
   const label1 = (
     <span>
-      <Icon icon={solid("user")} />
+      <Icon icon="user" />
       标签一
     </span>
   );
   const label2 = (
     <span>
-      <Icon icon={solid("ban")} />
+      <Icon icon="ban" />
       标签二 禁用
     </span>
   );
   const label3 = (
     <span>
-      <Icon icon={solid("pie-chart")} />
+      <Icon icon="pie-chart" />
       标签三
     </span>
   );

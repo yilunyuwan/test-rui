@@ -1,5 +1,4 @@
 import Icon from "../Icon/icon";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import React from "react";
 
 export interface UploadProps {
@@ -38,10 +37,10 @@ export interface UploadFile {
 export const statusIcon = (status: UploadFileStatus) => {
   switch (status) {
     case "success":
-      return <Icon icon={solid("file-circle-check")} theme="success" />;
+      return <Icon icon="file-circle-check" theme="success" />;
     case "error":
-      return <Icon icon={solid("file-circle-xmark")} theme="danger" />;
+      return <Icon icon="file-circle-xmark" theme="danger" />;
     default:
-      return <Icon icon={solid("spinner")} theme="primary" spin={true} />;
+      return <Icon icon="spinner" theme="primary" spin={true} />;
   }
 };

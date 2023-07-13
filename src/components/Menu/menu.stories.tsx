@@ -1,8 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Menu from "./menu";
-import SubMenu from "./subMenu";
-import MenuItem from "./menuItem";
+import Menu from "./index";
+import { VerticalTabs } from "../Tabs/tabs.stories";
 
 export default {
   title: "导航/菜单 Menu",
@@ -64,25 +63,39 @@ export default {
 
 const Template: ComponentStory<typeof Menu> = (args) => (
   <Menu {...args}>
-    <MenuItem>选项一</MenuItem>
-    <MenuItem disabled>选项二 禁用</MenuItem>
-    <SubMenu title="下拉菜单一">
-      <MenuItem>选项三</MenuItem>
-      <MenuItem>选项四</MenuItem>
-    </SubMenu>
-    <SubMenu title="下拉菜单二">
-      <MenuItem>选项五</MenuItem>
-      <MenuItem disabled>选项六 禁用</MenuItem>
-    </SubMenu>
+    <Menu.Item>选项一</Menu.Item>
+    <Menu.Item disabled>选项二 禁用</Menu.Item>
+    <Menu.SubMenu title="下拉菜单一">
+      <Menu.Item>选项三</Menu.Item>
+      <Menu.Item>选项四</Menu.Item>
+    </Menu.SubMenu>
+    <Menu.SubMenu title="下拉菜单二">
+      <Menu.Item>选项五</Menu.Item>
+      <Menu.Item disabled>选项六 禁用</Menu.Item>
+    </Menu.SubMenu>
   </Menu>
 );
 export const DefaultMenu = Template.bind({});
 DefaultMenu.storyName = "默认菜单";
+DefaultMenu.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
+};
 
 export const VerticalMenu = Template.bind({});
 VerticalMenu.storyName = "纵向菜单";
 VerticalMenu.args = {
   mode: "vertical",
+};
+VerticalMenu.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
 };
 
 export const ExpandedVerticalMenu = Template.bind({});
@@ -90,4 +103,11 @@ ExpandedVerticalMenu.storyName = "指定展开的纵向菜单";
 ExpandedVerticalMenu.args = {
   mode: "vertical",
   openedIndexes: ["2"],
+};
+ExpandedVerticalMenu.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
 };

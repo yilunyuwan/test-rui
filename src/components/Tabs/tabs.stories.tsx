@@ -1,8 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Tabs from "./tabs";
-import TabItem from "./tabItem";
-import Icon from "../Icon/icon";
+import Tabs from "./index";
+import Icon from "../Icon";
 
 export default {
   title: "导航/标签页 Tabs",
@@ -31,22 +30,34 @@ export default {
 
 const Template: ComponentStory<typeof Tabs> = (args) => (
   <Tabs {...args}>
-    <TabItem label="标签一">标签一的内容</TabItem>
-    <TabItem disabled label="标签二 禁用">
+    <Tabs.Item label="标签一">标签一的内容</Tabs.Item>
+    <Tabs.Item disabled label="标签二 禁用">
       标签二的内容
-    </TabItem>
-    <TabItem label="标签三">标签三的内容</TabItem>
+    </Tabs.Item>
+    <Tabs.Item label="标签三">标签三的内容</Tabs.Item>
   </Tabs>
 );
 export const DefaultTabs = Template.bind({});
 DefaultTabs.storyName = "默认标签页";
-
+DefaultTabs.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
+};
 export const VerticalTabs = Template.bind({});
 VerticalTabs.storyName = "卡片式标签页";
 VerticalTabs.args = {
   type: "card",
 };
-
+VerticalTabs.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
+};
 export const IconTabs: ComponentStory<typeof Tabs> = (args) => {
   const label1 = (
     <span>
@@ -68,22 +79,16 @@ export const IconTabs: ComponentStory<typeof Tabs> = (args) => {
   );
   return (
     <Tabs {...args}>
-      <TabItem label={label1}>标签一的内容</TabItem>
-      <TabItem disabled label={label2}>
+      <Tabs.Item label={label1}>标签一的内容</Tabs.Item>
+      <Tabs.Item disabled label={label2}>
         标签二的内容
-      </TabItem>
-      <TabItem label={label3}>标签三的内容</TabItem>
+      </Tabs.Item>
+      <Tabs.Item label={label3}>标签三的内容</Tabs.Item>
     </Tabs>
   );
 };
 IconTabs.storyName = "带图标的标签";
-IconTabs.parameters = {
-  docs: {
-    source: {
-      type: "code",
-    },
-  },
-};
+
 IconTabs.decorators = [
   (Story) => (
     <div className="story-iconTabs">
@@ -91,3 +96,10 @@ IconTabs.decorators = [
     </div>
   ),
 ];
+IconTabs.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
+};

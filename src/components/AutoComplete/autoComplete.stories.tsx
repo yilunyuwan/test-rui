@@ -93,7 +93,7 @@ export const AsyncAutoComplete: ComponentStory<typeof AutoComplete> = (
       <AutoComplete
         {...args}
         fetchSuggestion={handleFetch}
-        suffix={<Icon icon="github" />}
+        suffix={<Icon icon={["fab", "github"]} />}
       />
       {error && <div className="story-error">{error.message}</div>}
     </>

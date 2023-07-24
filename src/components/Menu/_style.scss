@@ -13,9 +13,11 @@
     border-bottom: $menu-item-active-border-width solid transparent;
     transition: $menu-transition;
 
-    &-active,
-    &:hover {
+    &-active {
       color: $menu-item-active-color;
+      border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+    &:hover {
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
     }
 
@@ -26,14 +28,14 @@
       border-bottom: none;
       color: $menu-item-disabled-color;
     }
+  }
+}
 
-    &-submenu {
-      .rui-icon{
-        margin-left: 0.5rem;
-        transition: transform .25s ease-in-out;
-      }
-    }
-
+.rui-submenu-arrowIcon {
+  margin-left: 0.5rem;
+  transition: transform .25s ease-in-out;
+  &-up{
+    transform: rotateX(180deg);
   }
 }
 
@@ -43,56 +45,68 @@
     border-bottom: 0;
     border-right: $menu-border-width solid $menu-border-color;
 
-    > .rui-menu-item {
+    >.rui-menu-item {
       border-left: $menu-item-active-border-width solid transparent;
       border-bottom: none;
 
       &-active,
       &:hover {
-        border-bottom: none;
         border-left: $menu-item-active-border-width solid $menu-item-active-color;
       }
 
-      &-disabled,
-      &-disabled:hover
-      {
-        border-left: $menu-item-active-border-width solid transparent;
+      &-active {
+        .rui-submenu {
+          color: initial;
+        }
+        .rui-submenu-title {
+          color: $menu-item-active-color;
+        }
       }
 
-      &-submenu {
-        &.rui-menu-item {
-          border-left: $menu-item-active-border-width solid transparent;
-          &-active,
-          &:hover {
-            color: initial;
-            .rui-submenu-title {
-              color: $menu-item-active-color;
-            }
-          }
-          &-opened{
-            .rui-icon {
-              transform: rotateX(180deg);
-            }
-          }
+      &-disabled,
+      &-disabled:hover {
+        border-left: $menu-item-active-border-width solid transparent;
+      }
+    }
+
+
+    .rui-menu-item-submenu.rui-menu-item {
+      padding: 0;
+      border-left: $menu-item-active-border-width solid transparent;
+      border-radius: $submenu-border-radius;
+      .rui-submenu-title {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        border-radius: $submenu-border-radius;
+        &:hover {
+          background: $menu-item-hover-bg-color;
         }
+      }
 
-        .rui-submenu {
-          padding-left: 0;
-          > .rui-menu-item {
-            list-style: none;
-            border-bottom: none;
+      .rui-submenu {
+        padding-left: 0;
+        background: $submenu-bg-color;
+        border-radius: $submenu-border-radius;
+        > .rui-menu-item {
+          list-style: none;
+          border-bottom: none;
+          padding-left: 2 * $menu-item-padding-x;
+          border-radius: $submenu-border-radius;
+          &:hover {
+            background: $menu-item-hover-bg-color;
           }
-
-          &-title {
-            margin-bottom: $menu-item-padding-y;
-            &:hover{
-              color: $menu-item-active-color;
-              transition: $menu-transition;
-            }
+          &-active,
+          &-active:hover {
+            background: $menu-item-active-bg-color;
+          }
+          &-disabled,
+          &-disabled:hover
+          {
+            background: none;
           }
         }
       }
     }
+
   }
 }
 
@@ -103,6 +117,14 @@
 
       &.rui-menu-item {
         border-bottom: $menu-item-active-border-width solid transparent;
+        &:hover,
+        &-active {
+          color: initial;
+          border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+        }
+        &-active .rui-submenu-title{
+          color: $menu-item-active-color;
+        }
 
         .rui-submenu {
           position: absolute;
@@ -113,22 +135,26 @@
           z-index: 3;
           list-style: none;
           border: $menu-border-width solid $menu-border-color;
+          border-radius: $submenu-border-radius;
           box-shadow: $menu-box-shadow;
           background: $white;
 
           .rui-menu-item {
             border-bottom: none;
-          }
-        }
+            border-radius: $submenu-border-radius;
 
-        &-active,
-        &:hover {
-          color: initial;
-          border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
-          .rui-submenu-title{
-            color: $menu-item-active-color;
-            .rui-icon {
-              transform: rotateX(180deg);
+            &:hover {
+              background: $menu-item-hover-bg-color;
+            }
+            &-active,
+            &-active:hover {
+              background: $menu-item-active-bg-color;
+            }
+
+            &-disabled,
+            &-disabled:hover
+            {
+              background: none;
             }
           }
         }

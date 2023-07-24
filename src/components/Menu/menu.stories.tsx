@@ -23,6 +23,9 @@ export default {
         options: [["2"], ["3"], ["2", "3"]],
       },
     },
+    style: {
+      control: "object",
+    },
   },
   parameters: {
     docs: {
@@ -89,6 +92,7 @@ export const VerticalMenu = Template.bind({});
 VerticalMenu.storyName = "纵向菜单";
 VerticalMenu.args = {
   mode: "vertical",
+  style: { width: 256 },
 };
 VerticalMenu.parameters = {
   docs: {
@@ -103,6 +107,7 @@ ExpandedVerticalMenu.storyName = "指定展开的纵向菜单";
 ExpandedVerticalMenu.args = {
   mode: "vertical",
   openedIndexes: ["2"],
+  style: { width: 256 },
 };
 ExpandedVerticalMenu.parameters = {
   docs: {

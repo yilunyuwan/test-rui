@@ -84,7 +84,7 @@ const Menu: React.FC<MenuProps> = (props) => {
 
   return (
     <MenuContext.Provider value={menuContext}>
-      <ul className={classes} {...restProps}>
+      <ul className={classes} style={style} {...restProps}>
         {filterChildren()}
       </ul>
     </MenuContext.Provider>

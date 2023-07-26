@@ -1,5 +1,5 @@
 {
-  "name": "rui",
+  "name": "rui-react",
   "version": "0.1.0",
   "description": "React UI library",
   "private": false,
@@ -47,7 +47,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "deploy": "sh scripts/deploy.sh",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run lint && npm run test:nowatch && npm run build"
   },
   "eslintConfig": {
     "extends": [

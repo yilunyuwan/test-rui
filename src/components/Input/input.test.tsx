@@ -1,6 +1,9 @@
 import Input from "./input";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Icon from "../Icon/icon";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+library.add(faUser, faLock);
 
 const defaultProps = {
   onChange: jest.fn(),

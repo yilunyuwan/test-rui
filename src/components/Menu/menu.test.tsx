@@ -3,6 +3,9 @@ import Menu, { MenuProps, Mode } from "./menu";
 import MenuItem from "./menuItem";
 import { scopedClass } from "../../helpers/utils";
 import SubMenu from "./subMenu";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+library.add(faAngleDown);
 
 const defaultProps = {
   onSelect: jest.fn(),

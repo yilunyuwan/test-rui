@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Menu from "./index";
-import { VerticalTabs } from "../Tabs/tabs.stories";
 
 export default {
   title: "导航/菜单 Menu",

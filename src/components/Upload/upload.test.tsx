@@ -3,6 +3,13 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { UploadProps } from "./utils";
 import axios from "axios";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faSpinner,
+  faXmark,
+  faFileCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faSpinner, faXmark, faFileCircleCheck);
 
 const testProps = {
   action: "justForTest",

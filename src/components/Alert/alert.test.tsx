@@ -1,6 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Alert, { AlertProps } from "./alert";
 import { scopedClass } from "../../helpers/utils";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+library.add(faXmark);
 
 const defaultProps: AlertProps = {
   title: "default alert",

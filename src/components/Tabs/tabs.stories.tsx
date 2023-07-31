@@ -19,7 +19,7 @@ export default {
       description: {
         component: `标签页，通过切换选项卡展现相关但不同类别的数据。<br />
                     支持下划线式和卡片式两种标签样式。<br />
-                    <code>Tabs</code>标签只接受<code>TabItem</code>标签作为子元素。<br/>`,
+                    <code>Tabs</code>标签只接受<code>Tab.Item</code>标签作为子元素。<br/>`,
       },
     },
     source: {

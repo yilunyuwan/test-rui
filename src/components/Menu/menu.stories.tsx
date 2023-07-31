@@ -31,8 +31,8 @@ export default {
       description: {
         component: `菜单列表，用于导航。<br />
                     支持横向和纵向两种模式，支持下拉菜单。<br />
-                    <code>Menu</code>标签只接受<code>MenuItem</code>标签或<code>SubMenu</code>标签作为子元素。<br/>
-                    <code>SubMenu</code>标签只接受<code>MenuItem</code>标签作为子元素。`,
+                    <code>Menu</code>标签只接受<code>Menu.Item</code>标签或<code>SubMenu</code>标签作为子元素。<br/>
+                    <code>SubMenu</code>标签只接受<code>Menu.Item</code>标签作为子元素。`,
       },
     },
     source: {

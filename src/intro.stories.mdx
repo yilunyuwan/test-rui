@@ -1,5 +1,12 @@
+import { Meta } from "@storybook/addon-docs";
+import { Tabs } from "./index.tsx";
+
+<Meta title="RUI" />
+
+# RUI
+
 RUI 是一套基于 React / TypeScript 实现的 UI 组件库，主要组件有导航菜单、自动完成、上传等。<br/>
-文档页面使用 Storybook 制作而成，可快速修改属性并实时看到变化。
+文档页面使用 Storybook 制作而成，可快速修改属性并实时看到变化。<br/>
 
 - 使用 Jest 以及 React Testing Library 实现单测覆盖率大于 90%。
 - 使用第三方库（react-fontawesome, react-transition-group）扩充组件，提供图标库及实现过渡动画效果。
@@ -7,22 +14,24 @@ RUI 是一套基于 React / TypeScript 实现的 UI 组件库，主要组件有�
 - 使用 GitHub Actions 完成 CI/CD 以及自动发布至 npm。
 
 [预览地址](https://yilunyuwan.gitee.io/rui/) &emsp;[源码链接](https://gitee.com/yilunyuwan/RUI) &emsp;[项目笔记](https://gitee.com/yilunyuwan/RUI/wikis/pages)
+<br />
 
 # 快速开始
 
+<br />
+
 ## 安装
 
-### 使用 npm
-
-```shell
-$ npm install rui-react
-```
-
-### 使用 yarn
-
-```shell
-$ yarn add rui-react
-```
+RUI 已发布至 npm，您可使用 npm 或 yarn 来安装
+<Tabs>
+    <Tabs.Item label="npm">
+      <code>$ npm install rui-react</code>
+    </Tabs.Item>
+    <Tabs.Item label="yarn">
+      <code>$ yarn add rui-react</code>
+    </Tabs.Item>
+</Tabs>
+<br/>
 
 ## 使用示例
 

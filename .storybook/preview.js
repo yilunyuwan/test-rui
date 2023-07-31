@@ -43,6 +43,7 @@ export const parameters = {
   options: {
     storySort: {
       order: [
+        "RUI",
         "基础",
         "表单",
         ["输入框 Input", "自动提示 AutoComplete"],

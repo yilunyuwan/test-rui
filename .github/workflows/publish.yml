@@ -3,6 +3,7 @@ name: Publish Package to npmjs
 on:
   release:
     type: [published]
+  workflow_dispatch:
 
 jobs:
   build-and-publish:

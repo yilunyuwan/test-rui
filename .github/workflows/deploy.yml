@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches: [master]
-    paths: ["src/components/**/*.stories.@(js|jsx|ts|tsx)", "src/**.mdx"]
+#    paths: ["src/components/**/*.stories.@(js|jsx|ts|tsx)", "src/**.mdx"]
   workflow_dispatch:
 
 permissions:

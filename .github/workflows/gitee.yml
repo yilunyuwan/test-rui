@@ -12,11 +12,11 @@ jobs:
       - name: Mirror GitHub to Gitee
         uses: Yikun/hub-mirror-action@master
         with:
-            src: github/test-rui
-            dst: gitee/test-rui
+            src: github/yilunyuwan
+            dst: gitee/yilunyuwan
             dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
             dst_token: ${{ secrets.GITEE_TOKEN }}
-            account_type: org
+            static_list: "test-rui"
 
       - name: Build Gitee Pages
         uses: yanglbme/gitee-pages-action@main

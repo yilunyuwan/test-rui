@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches: [master]
-#    paths: ["src/components/**/*.stories.@(js|jsx|ts|tsx)", "src/**.mdx"]
+    paths: ["src/components/**/*.stories.@(js|jsx|ts|tsx)", "src/**.mdx"]
   workflow_dispatch:
 
 permissions:
@@ -28,3 +28,17 @@ jobs:
         with:
           folder: storybook-static
 
+  deploy-gitee-pages:
+    needs: [build-and-deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror GitHub to Gitee
+        uses: ./.github/workflows/mirror-to-gitee.yml
+        secrets: inherit
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: yilunyuwan
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: yilunyuwan/test-rui
+          branch: gh-pages

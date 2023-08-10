@@ -10,18 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mirror GitHub to Gitee
-        uses: Yikun/hub-mirror-action@master
-        with:
-            src: github/yilunyuwan
-            dst: gitee/yilunyuwan
-            dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-            dst_token: ${{ secrets.GITEE_TOKEN }}
-            static_list: "test-rui"
+        uses: ./.github/workflows/mirror-to-gitee.yml
+        secrets: inherit
+#        uses: Yikun/hub-mirror-action@master
+#        with:
+#            src: github/yilunyuwan
+#            dst: gitee/yilunyuwan
+#            dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+#            dst_token: ${{ secrets.GITEE_TOKEN }}
+#            static_list: "test-rui"
 
-      - name: Build Gitee Pages
-        uses: yanglbme/gitee-pages-action@main
-        with:
-          gitee-username: yilunyuwan
-          gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          gitee-repo: yilunyuwan/rui-react
-          branch: gh-pages

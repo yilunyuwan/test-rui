@@ -12,10 +12,10 @@
     "UI",
     "React"
   ],
-  "homepage": "https://yilunyuwan.gitee.io/rui",
+  "homepage": "https://yilunyuwan.gitee.io/rui-react",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/yilunyuwan/RUI"
+    "url": "https://github.com/yilunyuwan/rui-react"
   },
   "files": [
     "dist"

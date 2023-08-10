@@ -34,9 +34,11 @@ jobs:
 
   deploy-gitee-pages:
     needs: [mirror-to-gitee]
-    uses: yanglbme/gitee-pages-action@main
-    with:
-      gitee-username: yilunyuwan
-      gitee-password: ${{ secrets.GITEE_PASSWORD }}
-      gitee-repo: yilunyuwan/test-rui
-      branch: gh-pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: yilunyuwan
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: yilunyuwan/test-rui
+          branch: gh-pages

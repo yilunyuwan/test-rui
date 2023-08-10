@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mirror GitHub to Gitee
-        uses: yilunyuwan/test-rui/.github/workflows/mirror-to-gitee.yml
+        uses: yilunyuwan/test-rui/.github/workflows/mirror-to-gitee.yml@master
         secrets: inherit
 #        uses: Yikun/hub-mirror-action@master
 #        with:

@@ -2,11 +2,6 @@ name: Mirror GitHub to Gitee
 
 on:
   workflow_call:
-    secrets:
-      GITEE_PRIVATE_KEY:
-        required: true
-      GITEE_TOKEN:
-        required: true
 
 jobs:
   mirror-to-Gitee:

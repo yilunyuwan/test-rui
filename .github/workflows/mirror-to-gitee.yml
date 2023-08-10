@@ -1,21 +1,11 @@
-name: Reusable workflow - Mirror GitHub to Gitee
+name: Mirror to Gitee
 
 on:
-  workflow_call:
-    secrets:
-      GITEE_PRIVATE_KEY:
-        required: true
-      GITEE_TOKEN:
-        required: true
+  push:
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
-  mirror-to-Gitee:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Yikun/hub-mirror-action@master
-        with:
-          src: github/yilunyuwan
-          dst: gitee/yilunyuwan
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}
-          static_list: "test-rui"
+  mirror-to-gitee:
+    uses: yilunyuwan/test-rui/.github/workflows/template-mirror.yml@master
+    secrets: inherit

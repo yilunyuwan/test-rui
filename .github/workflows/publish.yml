@@ -2,41 +2,19 @@ name: Publish Package to npmjs
 
 on:
   release:
-    types: [published]
+    type: [published]
+  workflow_dispatch:
 
 jobs:
-  publish-npm:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '14.x'
-        registry-url: 'https://registry.npmjs.org'
-    - run: npm ci
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-#name: Publish Package to npmjs
-#
-#on:
-#  release:
-#    type: [published]
-#  workflow_dispatch:
-#
-#jobs:
-#  build-and-publish:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v3
-#      - uses: actions/setup-node@v3
-#        with:
-#          node-version: '16.x'
-#          registry-url: https://registry.npmjs.org
-#      - name: Install and Publish
-#        - run: npm ci
-#        - run: npm publish
-#          env:
-#            NODE_AUTO_TOKEN: ${{ secrets.NPM_TOKEN }}
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTO_TOKEN: ${{ secrets.NPM_TOKEN }}

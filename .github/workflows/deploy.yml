@@ -28,17 +28,15 @@ jobs:
         with:
           folder: storybook-static
 
+  mirror-to-gitee:
+    uses: yilunyuwan/test-rui/.github/workflows/template-mirror.yml@master
+    secrets: inherit
+
   deploy-gitee-pages:
-    needs: [build-and-deploy]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Mirror GitHub to Gitee
-        uses: ./.github/workflows/mirror-to-gitee.yml
-        secrets: inherit
-      - name: Build Gitee Pages
-        uses: yanglbme/gitee-pages-action@main
-        with:
-          gitee-username: yilunyuwan
-          gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          gitee-repo: yilunyuwan/test-rui
-          branch: gh-pages
+    needs: [mirror-to-gitee]
+    uses: yanglbme/gitee-pages-action@main
+    with:
+      gitee-username: yilunyuwan
+      gitee-password: ${{ secrets.GITEE_PASSWORD }}
+      gitee-repo: yilunyuwan/test-rui
+      branch: gh-pages

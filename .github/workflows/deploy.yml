@@ -29,6 +29,7 @@ jobs:
           folder: storybook-static
 
   mirror-to-gitee:
+    needs: [build-and-deploy]
     uses: yilunyuwan/test-rui/.github/workflows/template-mirror.yml@master
     secrets: inherit
 

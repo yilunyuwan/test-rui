@@ -30,7 +30,7 @@ jobs:
 
   mirror-to-gitee:
     needs: [build-and-deploy]
-    uses: yilunyuwan/test-rui/.github/workflows/template-mirror.yml@master
+    uses: ./.github/workflows/template-mirror.yml
     secrets: inherit
 
   deploy-gitee-pages:
